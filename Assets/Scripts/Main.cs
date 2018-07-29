@@ -6,12 +6,12 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour {
-	public GameObject canvas;
   public static bool canSave = false;
   public static ChildPower childPower;
   public static ParentalPower fatherPower;
   public static ParentalPower motherPower;
-	//Can reduce to one button method. Just need to figrue out how to see which button made the press
+
+	//This is getting cluttered. Might want to start migrating stuff to other methods or classes
 	public void ButtonClick () {
     //Figures out which button was clicked
 		string pressedButton = EventSystem.current.currentSelectedGameObject.name;
@@ -23,11 +23,15 @@ public class Main : MonoBehaviour {
 		string[] parentalPowerArray = generateParentalPowers();
 		//Need to see if there's a way to get a truly random bunch of numbers
 		int i = Random.Range(0, parentalPowerArray.Length);
+    int j = Random.Range(0, FatherData.fatherData.fatherFirstNames.Length);
+    int k = Random.Range(0, FatherData.fatherData.fatherLastNames.Length);
+    string fatherName = FatherData.fatherData.fatherFirstNames[j] + " " + FatherData.fatherData.fatherLastNames[k];
 		string parentalPower = parentalPowerArray[i];
+    
 		if (pressedButton == "FatherButton") {
 			fatherPower = new ParentalPower(parentalPower);
 			GameObject.Find("Father").GetComponent<Text>().text = (
-			fatherPower.PowerName + "\nSTATS:\n" 
+			fatherPower.PowerName + "\n" + fatherName + "\nSTATS:\n" 
 			+ "Strength: " + fatherPower.Strength
 			+ "\nAgility: " + fatherPower.Agility
 			+ "\nWill: " + fatherPower.Will
