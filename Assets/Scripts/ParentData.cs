@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class FatherData : MonoBehaviour {
+public class ParentData : MonoBehaviour {
     public string[] fatherFirstNames;
     public string[] fatherLastNames;
-    public static FatherData fatherData;
+    public string[] motherFirstNames;
+    public string[] nicknames;
+    public static ParentData parentData;
 
     void Awake () {
-		if (fatherData == null) {
+		if (parentData == null) {
       DontDestroyOnLoad(gameObject);
-      fatherData = this;
-    } else if (fatherData != this) {
+      parentData = this;
+    } else if (parentData != this) {
       Destroy(gameObject);
     }
 	}

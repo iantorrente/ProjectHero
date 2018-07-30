@@ -23,9 +23,11 @@ public class Main : MonoBehaviour {
 		string[] parentalPowerArray = generateParentalPowers();
 		//Need to see if there's a way to get a truly random bunch of numbers
 		int i = Random.Range(0, parentalPowerArray.Length);
-    int j = Random.Range(0, FatherData.fatherData.fatherFirstNames.Length);
-    int k = Random.Range(0, FatherData.fatherData.fatherLastNames.Length);
-    string fatherName = FatherData.fatherData.fatherFirstNames[j] + " " + FatherData.fatherData.fatherLastNames[k];
+    int j = Random.Range(0, ParentData.parentData.fatherFirstNames.Length);
+    int k = Random.Range(0, ParentData.parentData.fatherLastNames.Length);
+    string lastName = ParentData.parentData.fatherLastNames[k]; //Gonna need to make last name adapt to what the father's last name was
+    string fatherName = ParentData.parentData.fatherFirstNames[j] + " " + lastName;
+    string motherName = ParentData.parentData.motherFirstNames[j] + " " + lastName;
 		string parentalPower = parentalPowerArray[i];
     
 		if (pressedButton == "FatherButton") {
@@ -40,7 +42,7 @@ public class Main : MonoBehaviour {
 		} else if (pressedButton == "MotherButton") {
 			motherPower = new ParentalPower(parentalPower);
 			GameObject.Find("Mother").GetComponent<Text>().text = (
-			motherPower.PowerName + "\nSTATS:\n" 
+			motherPower.PowerName + "\n" + motherName + "\nSTATS:\n" 
 			+ "Strength: " + motherPower.Strength
 			+ "\nAgility: " + motherPower.Agility
 			+ "\nWill: " + motherPower.Will
