@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class TimeHandler : MonoBehaviour {
   double days;
+  double months;
   bool isInteger;
   public void handleDayChange () {
     PlayerData.playerData.days += 1;
@@ -16,12 +17,22 @@ public class TimeHandler : MonoBehaviour {
 
   public void handleMonthChange () {
     days = (double)PlayerData.playerData.days / 30;
-    Debug.Log(days);
     isInteger = unchecked(days == (int)days);
-    Debug.Log(isInteger);
     if (isInteger) {
       Debug.Log("Month is changing");
       PlayerData.playerData.months += 1;
+    }
+    handleYearChange();
+  }
+
+  public void handleYearChange () {
+    months = (double)PlayerData.playerData.months / 12;
+    isInteger = unchecked(months == (int)months);
+    Debug.Log(months);
+    if (isInteger && months != 0) {
+      Debug.Log("Year is changing");
+      PlayerData.playerData.years += 1;
+      PlayerData.playerData.months = 0;
     }
   }
 
