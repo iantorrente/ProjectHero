@@ -11,6 +11,10 @@ public class Main : MonoBehaviour {
   public static ParentalPower fatherPower;
   public static ParentalPower motherPower;
 
+  // void Awake () {
+  //   DataInitializer.deserializeJson();
+  // }
+
 	//This is getting cluttered. Might want to start migrating stuff to other methods or classes
 	public void ButtonClick () {
     //Figures out which button was clicked
@@ -33,7 +37,7 @@ public class Main : MonoBehaviour {
 		if (pressedButton == "FatherButton") {
 			fatherPower = new ParentalPower(parentalPower);
 			GameObject.Find("Father").GetComponent<Text>().text = (
-			fatherPower.PowerName + "\n" + fatherName + "\nSTATS:\n" 
+			fatherPower.PowerName + "\n" + fatherName + "\nSTATS:\n" //Broken in an actual build
 			+ "Strength: " + fatherPower.Strength
 			+ "\nAgility: " + fatherPower.Agility
 			+ "\nWill: " + fatherPower.Will
