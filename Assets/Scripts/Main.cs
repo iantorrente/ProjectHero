@@ -16,7 +16,7 @@ public class Main : MonoBehaviour {
   // }
 
 	//This is getting cluttered. Might want to start migrating stuff to other methods or classes
-	public void ButtonClick () {
+	public void buttonClick () {
     //Figures out which button was clicked
 		string pressedButton = EventSystem.current.currentSelectedGameObject.name;
 
@@ -55,14 +55,14 @@ public class Main : MonoBehaviour {
 		}
 
     if (fatherPower != null && motherPower != null) {
-		  SetChildPower(fatherPower ,motherPower);
+		  setChildPower(fatherPower ,motherPower);
     }
 	}
 
-	public void SetChildPower (ParentalPower fPower, ParentalPower mPower) {
+	public void setChildPower (ParentalPower fPower, ParentalPower mPower) {
     childPower = new ChildPower(fPower, mPower);
-    GameObject.Find("Child Power Description").GetComponent<Text>().text = childPower.Description;
-    GameObject.Find("Child Power Name").GetComponent<Text>().text = childPower.PowerName;
+    GameObject.Find("Child Power Description").GetComponent<Text>().text = childPower.description;
+    GameObject.Find("Child Power Name").GetComponent<Text>().text = childPower.powerName;
 		GameObject.Find("Child").GetComponent<Text>().text = (
     "Strength: " + childPower.Strength
     + "\nAgility: " + childPower.Agility

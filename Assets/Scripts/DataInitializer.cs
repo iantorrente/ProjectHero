@@ -25,24 +25,12 @@ public class DataInitializer : MonoBehaviour {
   
   //Deserializes the JSON file in the path 'fatherNamePath'. Can be used to deserialize all data, not just the father one
   public static void deserializeJson () { //Possibly find a way to make it generic so you can use it to deserialize any JSON
-  TextAsset fNameFile = Resources.Load<TextAsset>("FatherNames"); //With Resources.Load<>() you don't need the filepath, just what the file is called
-  TextAsset mNameFile = Resources.Load<TextAsset>("MotherNames");
-  TextAsset nNameFile = Resources.Load<TextAsset>("Nicknames");
-  string fJsonString = fNameFile.ToString();
-  string mJsonString = mNameFile.ToString();
-  string nJsonString = nNameFile.ToString();
+  string fJsonString = Resources.Load<TextAsset>("FatherNames").ToString(); //With Resources.Load<>() you only need the filepath from within /Resources
+  string mJsonString = Resources.Load<TextAsset>("MotherNames").ToString();
+  string nJsonString = Resources.Load<TextAsset>("Nicknames").ToString();
   FatherName fNameCollection = JsonConvert.DeserializeObject<FatherName>(fJsonString);
   MotherName mNameCollection = JsonConvert.DeserializeObject<MotherName>(mJsonString);
   ParentNickname nNameCollection = JsonConvert.DeserializeObject<ParentNickname>(nJsonString);
-    // using (StreamReader stream = new StreamReader(motherNamePath)) {
-    //   mJsonString = stream.ReadToEnd();
-    //   mNameCollection = JsonUtility.FromJson<MotherName>(mJsonString);
-    // }
-    // using (StreamReader stream = new StreamReader(nicknameNamePath)) {
-    //   nJsonString = stream.ReadToEnd();
-    //   Debug.Log(nJsonString);
-    //   nNameCollection = JsonConvert.DeserializeObject<ParentNickname>(nJsonString); //Use this from now on
-    // }
     //Put them into persistent data
     ParentData.parentData.fatherFirstNames = fNameCollection.firstNames;
     ParentData.parentData.fatherLastNames = fNameCollection.lastNames;

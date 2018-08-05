@@ -7,6 +7,11 @@ public class PlayerData : MonoBehaviour {
   public ParentalPower fatherPower;
   public ParentalPower motherPower;
   public string playerName;
+  public string dayCycle = "Morning";
+  public int years = 0;
+  public int months = 0;
+  public int days = 0;
+  public int stamina = 4;
   public static PlayerData playerData;
 	// Use this for initialization
 	void Awake () {
