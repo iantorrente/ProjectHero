@@ -64,10 +64,10 @@ public class Main : MonoBehaviour {
     GameObject.Find("Child Power Description").GetComponent<Text>().text = childPower.description;
     GameObject.Find("Child Power Name").GetComponent<Text>().text = childPower.powerName;
 		GameObject.Find("Child").GetComponent<Text>().text = (
-    "Strength: " + childPower.Strength
-    + "\nAgility: " + childPower.Agility
-    + "\nWill: " + childPower.Will
-    + "\nFortitude: " + childPower.Fortitude);
+    "Strength: " + (int)childPower.Strength
+    + "\nAgility: " + (int)childPower.Agility
+    + "\nWill: " + (int)childPower.Will
+    + "\nFortitude: " + (int)childPower.Fortitude);
     canSave = true;
 	}
 

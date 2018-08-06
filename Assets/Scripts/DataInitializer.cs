@@ -31,14 +31,14 @@ public class DataInitializer : MonoBehaviour {
   FatherName fNameCollection = JsonConvert.DeserializeObject<FatherName>(fJsonString);
   MotherName mNameCollection = JsonConvert.DeserializeObject<MotherName>(mJsonString);
   ParentNickname nNameCollection = JsonConvert.DeserializeObject<ParentNickname>(nJsonString);
-    //Put them into persistent data
-    ParentData.parentData.fatherFirstNames = fNameCollection.firstNames;
-    ParentData.parentData.fatherLastNames = fNameCollection.lastNames;
-    ParentData.parentData.motherFirstNames = mNameCollection.firstNames;
-    ParentData.parentData.strengthNicknames = nNameCollection.nicknames[0].nicknames;
-    ParentData.parentData.agilityNicknames = nNameCollection.nicknames[1].nicknames;
-    ParentData.parentData.willNicknames = nNameCollection.nicknames[2].nicknames;
-    ParentData.parentData.fortitudeNicknames = nNameCollection.nicknames[3].nicknames;
+  //Put them into persistent data
+  ParentData.parentData.fatherFirstNames = fNameCollection.firstNames;
+  ParentData.parentData.fatherLastNames = fNameCollection.lastNames;
+  ParentData.parentData.motherFirstNames = mNameCollection.firstNames;
+  ParentData.parentData.strengthNicknames = nNameCollection.nicknames[0].nicknames;
+  ParentData.parentData.agilityNicknames = nNameCollection.nicknames[1].nicknames;
+  ParentData.parentData.willNicknames = nNameCollection.nicknames[2].nicknames;
+  ParentData.parentData.fortitudeNicknames = nNameCollection.nicknames[3].nicknames;
   }
 
   //When the script is loaded this is run

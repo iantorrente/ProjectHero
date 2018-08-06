@@ -8,13 +8,14 @@ public class InitializeData : MonoBehaviour {
   private void Initialize () {
     ChildPower playerPower = PlayerData.playerData.playerPower;
     //Only display the attributes rounded up
+    //TODO: CONTEXTUAL PLURAL FOR TIME (year(s), month(s), day(s))
 		GameObject.Find("Player Data Text").GetComponent<Text>().text = (
       playerPower.powerName + "\nSTATS:"
       + "\nStrength: " + (int)playerPower.Strength
       + "\nAgility: " + (int)playerPower.Agility
       + "\nWill: " + (int)playerPower.Will
       + "\nFortitude: " + (int)playerPower.Fortitude
-      + "\nDays: " + PlayerData.playerData.days
+      + "\nTime: " + PlayerData.playerData.years + " years, " + PlayerData.playerData.months + " months, " + PlayerData.playerData.days + " days"
     );
     GameObject.Find("Time").GetComponent<Text>().text = (PlayerData.playerData.dayCycle).ToUpper();
   }
