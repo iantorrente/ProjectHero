@@ -9,6 +9,7 @@ public class CityHandler : MonoBehaviour {
   public void buttonClick () {
     string pressedButton = EventSystem.current.currentSelectedGameObject.name;
     handleSceneChange(pressedButton);
+    handleActions(pressedButton);
   }
 
   private void handleSceneChange (string pressedButton) {
@@ -24,6 +25,24 @@ public class CityHandler : MonoBehaviour {
       SceneManager.LoadScene("Home", LoadSceneMode.Single);
     } else if (pressedButton == "Back Button") {
       SceneManager.LoadScene("The City", LoadSceneMode.Single);
+    }
+  }
+
+  private void handleActions (string pressedButton) {
+    //Home Actions
+    if (pressedButton == "Nap") {
+      TimeHandler.handleCycleChange("nap");
+    } else if (pressedButton == "Sleep") {
+      TimeHandler.handleDayChange();
+    }
+
+    //Gym Actions
+    if (pressedButton == "Strength Training") {
+      TrainingHandler.handleTraining("strength");
+    } else if (pressedButton == "Agility Training") {
+      TrainingHandler.handleTraining("agility");
+    } else if (pressedButton == "Fortitude Training") {
+      TrainingHandler.handleTraining("fortitude");
     }
   }
 }

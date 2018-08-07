@@ -38,20 +38,20 @@ public class Main : MonoBehaviour {
 			fatherPower = new ParentalPower(parentalPower);
 			GameObject.Find("Father").GetComponent<Text>().text = (
 			fatherPower.PowerName + "\n" + fatherName + "\nSTATS:\n" //Broken in an actual build
-			+ "Strength: " + fatherPower.Strength
-			+ "\nAgility: " + fatherPower.Agility
-			+ "\nWill: " + fatherPower.Will
-			+ "\nFortitude: " + fatherPower.Fortitude
-			+ "\nPopularity: " + fatherPower.Popularity);
+			+ "Strength: " + fatherPower.strength
+			+ "\nAgility: " + fatherPower.agility
+			+ "\nWill: " + fatherPower.will
+			+ "\nFortitude: " + fatherPower.fortitude
+			+ "\nPopularity: " + fatherPower.popularity);
 		} else if (pressedButton == "MotherButton") {
 			motherPower = new ParentalPower(parentalPower);
 			GameObject.Find("Mother").GetComponent<Text>().text = (
 			motherPower.PowerName + "\n" + motherName + "\nSTATS:\n" 
-			+ "Strength: " + motherPower.Strength
-			+ "\nAgility: " + motherPower.Agility
-			+ "\nWill: " + motherPower.Will
-			+ "\nFortitude: " + motherPower.Fortitude
-			+ "\nPopularity: " + motherPower.Popularity);
+			+ "Strength: " + motherPower.strength
+			+ "\nAgility: " + motherPower.agility
+			+ "\nWill: " + motherPower.will
+			+ "\nFortitude: " + motherPower.fortitude
+			+ "\nPopularity: " + motherPower.popularity);
 		}
 
     if (fatherPower != null && motherPower != null) {
@@ -64,10 +64,10 @@ public class Main : MonoBehaviour {
     GameObject.Find("Child Power Description").GetComponent<Text>().text = childPower.description;
     GameObject.Find("Child Power Name").GetComponent<Text>().text = childPower.powerName;
 		GameObject.Find("Child").GetComponent<Text>().text = (
-    "Strength: " + (int)childPower.Strength
-    + "\nAgility: " + (int)childPower.Agility
-    + "\nWill: " + (int)childPower.Will
-    + "\nFortitude: " + (int)childPower.Fortitude);
+    "Strength: " + (int)childPower.strength
+    + "\nAgility: " + (int)childPower.agility
+    + "\nWill: " + (int)childPower.will
+    + "\nFortitude: " + (int)childPower.fortitude);
     canSave = true;
 	}
 

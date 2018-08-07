@@ -5,12 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TimeHandler : MonoBehaviour {
-  public static EnergyHandler EnergyHandler;
-  double days;
-  double months;
-  bool isInteger;
+  static double days;
+  static double months;
+  static bool isInteger;
   
-  public void handleDayChange () {
+  public static void handleDayChange () {
     PlayerData.playerData.days += 1;
     PlayerData.playerData.dayCycle = "Morning";
     days = (double)PlayerData.playerData.days / 28;
@@ -18,11 +17,11 @@ public class TimeHandler : MonoBehaviour {
     if (isInteger) {
       handleMonthChange();
     }
+    EnergyHandler.handleEnergy("sleep");
     SceneManager.LoadScene("The City", LoadSceneMode.Single);
   }
 
-  public void handleMonthChange () {
-    Debug.Log("Month is changing");
+  public static void handleMonthChange () {
     PlayerData.playerData.months += 1;
     PlayerData.playerData.days = 0;
     months = (double)PlayerData.playerData.months / 12;
@@ -33,7 +32,7 @@ public class TimeHandler : MonoBehaviour {
 
   }
 
-  public void handleYearChange () {
+  public static void handleYearChange () {
     PlayerData.playerData.years += 1;
     PlayerData.playerData.months = 0;
   }
@@ -42,8 +41,13 @@ public class TimeHandler : MonoBehaviour {
   public static void handleWeek () {
   }
 
-  //Can't be used by unity components if it's static. Check into it
-  public void handleCycleChange () {
+  //Make it so that it takes a string of what type of action was made "training", "job", "sleep", etc. and judge what to do from there
+  public static void handleCycleChange (string action) {
+    if (action == "nap") {
+      EnergyHandler.handleEnergy(action);
+    }
+
+    //Check if the player napped. If they did then give them some energy back
     if (PlayerData.playerData.dayCycle == "Morning") {
       PlayerData.playerData.dayCycle = "Afternoon";
     } else if (PlayerData.playerData.dayCycle == "Afternoon") {
@@ -52,7 +56,7 @@ public class TimeHandler : MonoBehaviour {
       PlayerData.playerData.days += 1;
       PlayerData.playerData.dayCycle = "Morning";
     }
-    //EnergyHandler.handleEnergy();
+
     SceneManager.LoadScene("The City", LoadSceneMode.Single);
   }
 }

@@ -11,13 +11,14 @@ public class InitializeData : MonoBehaviour {
     //TODO: CONTEXTUAL PLURAL FOR TIME (year(s), month(s), day(s))
 		GameObject.Find("Player Data Text").GetComponent<Text>().text = (
       playerPower.powerName + "\nSTATS:"
-      + "\nStrength: " + (int)playerPower.Strength
-      + "\nAgility: " + (int)playerPower.Agility
-      + "\nWill: " + (int)playerPower.Will
-      + "\nFortitude: " + (int)playerPower.Fortitude
+      + "\nStrength: " + (int)playerPower.strength
+      + "\nAgility: " + (int)playerPower.agility
+      + "\nWill: " + (int)playerPower.will
+      + "\nFortitude: " + (int)playerPower.fortitude
       + "\nTime: " + PlayerData.playerData.years + " years, " + PlayerData.playerData.months + " months, " + PlayerData.playerData.days + " days"
     );
     GameObject.Find("Time").GetComponent<Text>().text = (PlayerData.playerData.dayCycle).ToUpper();
+    GameObject.Find("Stamina").GetComponent<Text>().text = ("Stamina: " + PlayerData.playerData.stamina);
   }
 
 	// Use this for initialization

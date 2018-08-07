@@ -16,6 +16,8 @@ public class PlayerData : MonoBehaviour {
   public int days = 0;
   public int stamina = 4;
   public static PlayerData playerData;
+  //Make a new health field that tracks health as a string (healthy, fatigued, exhausted, etc.)
+
 	// Use this for initialization
 	void Awake () {
 		if (playerData == null) {
