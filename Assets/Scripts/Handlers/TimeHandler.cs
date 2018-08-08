@@ -10,6 +10,7 @@ public class TimeHandler : MonoBehaviour {
   static bool isInteger;
   
   public static void handleDayChange () {
+    EnergyHandler.handleEnergy("sleep");
     PlayerData.playerData.days += 1;
     PlayerData.playerData.dayCycle = "Morning";
     days = (double)PlayerData.playerData.days / 28;
@@ -17,7 +18,6 @@ public class TimeHandler : MonoBehaviour {
     if (isInteger) {
       handleMonthChange();
     }
-    EnergyHandler.handleEnergy("sleep");
     SceneManager.LoadScene("The City", LoadSceneMode.Single);
   }
 

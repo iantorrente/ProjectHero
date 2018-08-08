@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrainingHandler : MonoBehaviour {
   public static void handleTraining (string action) {
     int stamina = PlayerData.playerData.stamina;
+    
     if (stamina > 0) {
       if (action == "strength") {
         PlayerData.playerData.playerPower.strength += 1;
