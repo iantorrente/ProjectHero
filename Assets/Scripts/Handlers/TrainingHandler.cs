@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Might want to rework this flow. It gets convoluted and too complex
 public class TrainingHandler : MonoBehaviour {
   public static void handleTraining (string action) {
     int stamina = PlayerData.playerData.stamina;
@@ -17,7 +18,6 @@ public class TrainingHandler : MonoBehaviour {
         PlayerData.playerData.playerPower.will += 1;
       }
       TimeHandler.handleCycleChange("training");
-      EnergyHandler.handleEnergy("training");
       
     } else if (stamina == 0) {
       Debug.Log("Rest up, " + PlayerData.playerData.playerPower.powerName);

@@ -22,6 +22,7 @@ public class GlobalData : MonoBehaviour {
   public float crimeRate;
   public string dayCycle = "Morning";
   public string weekDayName = "Monday";
+  public string[] WeekDayNameArray = new string[] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
   void Awake () {
     if (globalData == null) {

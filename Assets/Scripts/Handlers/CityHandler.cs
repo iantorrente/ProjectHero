@@ -37,7 +37,7 @@ public class CityHandler : MonoBehaviour {
     if (pressedButton == "Nap") {
       TimeHandler.handleCycleChange("nap");
     } else if (pressedButton == "Sleep") {
-      TimeHandler.handleDayChange();
+      TimeHandler.handleDayChange("sleep");
     }
 
     //Gym Actions

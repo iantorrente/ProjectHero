@@ -4,17 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//Handles the flow of time. 
+//handleDayChange() progresses the day by 1 and 
 public class TimeHandler : MonoBehaviour {
   static double days;
   static double months;
   static bool isInteger;
   
-  public static void handleDayChange () {
+  public static void handleDayChange (string action) {
     //Run SimulationHandler.handleSimulation() here
-    EnergyHandler.handleEnergy("sleep");
+    if (action == "sleep") {
+      EnergyHandler.handleEnergy(action);
+    } else if (action == "nap") {
+      EnergyHandler.handleEnergy(action);
+    } else if (action == "training") {
+      EnergyHandler.handleEnergy(action);
+    }
     GlobalData.globalData.days += 1;
-    GlobalData.globalData.dayCycle = "Morning";
     GlobalData.globalData.weekDay += 1;
+    GlobalData.globalData.dayCycle = "Morning";
 
     if (GlobalData.globalData.weekDay == 7) {
       GlobalData.globalData.weekDay = 0;
@@ -38,7 +46,6 @@ public class TimeHandler : MonoBehaviour {
     if (isInteger && months != 0) {
       handleYearChange();
     }
-
   }
 
   public static void handleYearChange () {
@@ -49,28 +56,26 @@ public class TimeHandler : MonoBehaviour {
   //TODO: work on week handler for calendar system
   public static void handleWeek () {
     int weekDay = GlobalData.globalData.weekDay;
-    string[] weekDayNameArray = new string[] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
-    GlobalData.globalData.weekDayName = weekDayNameArray[weekDay];
-    Debug.Log(GlobalData.globalData.weekDayName);
+    GlobalData.globalData.weekDayName = GlobalData.globalData.WeekDayNameArray[weekDay];
   }
 
   //Make it so that it takes a string of what type of action was made "training", "job", "sleep", etc. and judge what to do from there
   public static void handleCycleChange (string action) {
+    string dayCycle = GlobalData.globalData.dayCycle;
     if (action == "nap") {
+      EnergyHandler.handleEnergy(action);
+    } else if (action == "training" && dayCycle != "Night") {
       EnergyHandler.handleEnergy(action);
     }
 
     //Check if the player napped. If they did then give them some energy back
-    if (GlobalData.globalData.dayCycle == "Morning") {
+    if (dayCycle == "Morning") {
       GlobalData.globalData.dayCycle = "Afternoon";
-    } else if (GlobalData.globalData.dayCycle == "Afternoon") {
+    } else if (dayCycle == "Afternoon") {
       GlobalData.globalData.dayCycle = "Night";
-    } else if (GlobalData.globalData.dayCycle == "Night") {
-      GlobalData.globalData.days += 1;
-      GlobalData.globalData.weekDay += 1;
-      GlobalData.globalData.dayCycle = "Morning";
-      handleWeek();
+    } else if (dayCycle == "Night") {
+      handleDayChange(action);
     }
 
     SceneManager.LoadScene("The City", LoadSceneMode.Single);

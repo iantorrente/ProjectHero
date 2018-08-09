@@ -7,7 +7,6 @@ public class EnergyHandler : MonoBehaviour {
     int baseStamina = 4;
     int maxStamina = baseStamina + Mathf.RoundToInt((float)PlayerData.playerData.playerPower.fortitude / 10);
     int stamina = PlayerData.playerData.stamina;
-    Debug.Log(GlobalData.globalData.dayCycle);
     
     if (stamina <= maxStamina) {
       if (action == "nap" && stamina != maxStamina) {
@@ -15,7 +14,6 @@ public class EnergyHandler : MonoBehaviour {
       } else if (action == "sleep") {
         if (GlobalData.globalData.dayCycle == "Night") {
           //Sleeping at night is more restful
-          Debug.Log("Giving full energy back");
           stamina += (maxStamina - stamina);
         } else {
           //Sleeping at any other time will only give back half of the max stamina
