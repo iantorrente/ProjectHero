@@ -23,9 +23,13 @@ public class CityHandler : MonoBehaviour {
       SceneManager.LoadScene("Arena", LoadSceneMode.Single);
     } else if (pressedButton == "Home") {
       SceneManager.LoadScene("Home", LoadSceneMode.Single);
+    } else if (pressedButton == "City Hall") {
+      SceneManager.LoadScene("City Hall", LoadSceneMode.Single);
+    } else if (pressedButton == "Library") {
+      SceneManager.LoadScene("Library", LoadSceneMode.Single);
     } else if (pressedButton == "Back Button") {
       SceneManager.LoadScene("The City", LoadSceneMode.Single);
-    }
+    } 
   }
 
   private void handleActions (string pressedButton) {
@@ -43,6 +47,16 @@ public class CityHandler : MonoBehaviour {
       TrainingHandler.handleTraining("agility");
     } else if (pressedButton == "Fortitude Training") {
       TrainingHandler.handleTraining("fortitude");
+    }
+
+    //University Actions
+    if (pressedButton == "Will Training") {
+      TrainingHandler.handleTraining("will");
+    }
+
+    //Agency Actions
+    if (pressedButton == "Find Job") {
+      Debug.Log("Sorry hero, there isn't anything yet.");
     }
   }
 }

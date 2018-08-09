@@ -4,6 +4,7 @@ using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
 
+//Handles serializing and deserializing JSON files
 public class DataInitializer : MonoBehaviour {
   public class FatherName {
     public string[] firstNames;

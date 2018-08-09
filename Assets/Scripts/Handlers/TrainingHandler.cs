@@ -13,9 +13,12 @@ public class TrainingHandler : MonoBehaviour {
         PlayerData.playerData.playerPower.agility += 1;
       } else if (action == "fortitude") {
         PlayerData.playerData.playerPower.fortitude += 1;
+      } else if (action == "will") {
+        PlayerData.playerData.playerPower.will += 1;
       }
       TimeHandler.handleCycleChange("training");
       EnergyHandler.handleEnergy("training");
+      
     } else if (stamina == 0) {
       Debug.Log("Rest up, " + PlayerData.playerData.playerPower.powerName);
     }

@@ -10,21 +10,30 @@ public class TimeHandler : MonoBehaviour {
   static bool isInteger;
   
   public static void handleDayChange () {
+    //Run SimulationHandler.handleSimulation() here
     EnergyHandler.handleEnergy("sleep");
-    PlayerData.playerData.days += 1;
-    PlayerData.playerData.dayCycle = "Morning";
-    days = (double)PlayerData.playerData.days / 28;
+    GlobalData.globalData.days += 1;
+    GlobalData.globalData.dayCycle = "Morning";
+    GlobalData.globalData.weekDay += 1;
+
+    if (GlobalData.globalData.weekDay == 7) {
+      GlobalData.globalData.weekDay = 0;
+    }
+    handleWeek();
+    
+    days = (double)GlobalData.globalData.days / 28;
     isInteger = unchecked(days == (int)days);
     if (isInteger) {
       handleMonthChange();
     }
+    SimulationHandler.handleSimulation();
     SceneManager.LoadScene("The City", LoadSceneMode.Single);
   }
 
   public static void handleMonthChange () {
-    PlayerData.playerData.months += 1;
-    PlayerData.playerData.days = 0;
-    months = (double)PlayerData.playerData.months / 12;
+    GlobalData.globalData.months += 1;
+    GlobalData.globalData.days = 0;
+    months = (double)GlobalData.globalData.months / 12;
     isInteger = unchecked(months == (int)months);
     if (isInteger && months != 0) {
       handleYearChange();
@@ -33,12 +42,17 @@ public class TimeHandler : MonoBehaviour {
   }
 
   public static void handleYearChange () {
-    PlayerData.playerData.years += 1;
-    PlayerData.playerData.months = 0;
+    GlobalData.globalData.years += 1;
+    GlobalData.globalData.months = 0;
   }
 
   //TODO: work on week handler for calendar system
   public static void handleWeek () {
+    int weekDay = GlobalData.globalData.weekDay;
+    string[] weekDayNameArray = new string[] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+
+    GlobalData.globalData.weekDayName = weekDayNameArray[weekDay];
+    Debug.Log(GlobalData.globalData.weekDayName);
   }
 
   //Make it so that it takes a string of what type of action was made "training", "job", "sleep", etc. and judge what to do from there
@@ -48,13 +62,15 @@ public class TimeHandler : MonoBehaviour {
     }
 
     //Check if the player napped. If they did then give them some energy back
-    if (PlayerData.playerData.dayCycle == "Morning") {
-      PlayerData.playerData.dayCycle = "Afternoon";
-    } else if (PlayerData.playerData.dayCycle == "Afternoon") {
-      PlayerData.playerData.dayCycle = "Night";
-    } else if (PlayerData.playerData.dayCycle == "Night") {
-      PlayerData.playerData.days += 1;
-      PlayerData.playerData.dayCycle = "Morning";
+    if (GlobalData.globalData.dayCycle == "Morning") {
+      GlobalData.globalData.dayCycle = "Afternoon";
+    } else if (GlobalData.globalData.dayCycle == "Afternoon") {
+      GlobalData.globalData.dayCycle = "Night";
+    } else if (GlobalData.globalData.dayCycle == "Night") {
+      GlobalData.globalData.days += 1;
+      GlobalData.globalData.weekDay += 1;
+      GlobalData.globalData.dayCycle = "Morning";
+      handleWeek();
     }
 
     SceneManager.LoadScene("The City", LoadSceneMode.Single);

@@ -1,0 +1,53 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+public class DisplayData : MonoBehaviour {
+  //Gets initialized every time player goes into The City scene. Might want to change it
+  private void initialize () {
+    string activeScene = SceneManager.GetActiveScene().name;
+    if (activeScene == "Home") {
+      displayPlayerStats();
+    } else if (activeScene == "City Hall") {
+      displayGlobalStats();
+    } else {
+      displayInformation();
+    }
+  }
+
+  private void displayInformation () {
+    GameObject.Find("Time").GetComponent<Text>().text = ((GlobalData.globalData.weekDayName).ToUpper() + " " + GlobalData.globalData.dayCycle).ToUpper();
+    GameObject.Find("Stamina").GetComponent<Text>().text = ("Stamina: " + PlayerData.playerData.stamina);
+  }
+
+  private void displayPlayerStats () {
+    ChildPower playerPower = PlayerData.playerData.playerPower;
+		GameObject.Find("Player Data Text").GetComponent<Text>().text = (
+      playerPower.powerName + "\nSTATS:"
+      + "\nStrength: " + (int)playerPower.strength
+      + "\nAgility: " + (int)playerPower.agility
+      + "\nWill: " + (int)playerPower.will
+      + "\nFortitude: " + (int)playerPower.fortitude
+      + "\nTime: " + GlobalData.globalData.years + " years, " + GlobalData.globalData.months + " months, " + GlobalData.globalData.days + " days"
+    );
+  }
+
+  private void displayGlobalStats () {
+    int popBirth = (int)(GlobalData.globalData.generalPopulation * GlobalData.globalData.dailyBirthRate);
+    int popDeath = (int)(GlobalData.globalData.generalPopulation * GlobalData.globalData.dailyDeathRate);
+    GameObject.Find("Global Stats").GetComponent<Text>().text = (
+      "Population: " + GlobalData.globalData.generalPopulation
+      + "\nRegistered Heroes: " + GlobalData.globalData.heroPopulation
+      + "\nKnown Villains: " + GlobalData.globalData.villainPopulation
+      + "\nBirths per day: " + popBirth
+      + "\nDeaths per day: " + popDeath
+    );
+  }
+
+	// Use this for initialization
+	void Awake () {
+    initialize();
+  }
+}

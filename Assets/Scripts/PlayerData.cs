@@ -7,13 +7,7 @@ public class PlayerData : MonoBehaviour {
   public ParentalPower fatherPower;
   public ParentalPower motherPower;
   public string playerName;
-  public string dayCycle = "Morning";
-  public string weekDayName = "Monday";
   public double money;
-  public int years = 0;
-  public int months = 0;
-  public int weekDay = 0;
-  public int days = 0;
   public int stamina = 4;
   public static PlayerData playerData;
   //Make a new health field that tracks health as a string (healthy, fatigued, exhausted, etc.)
