@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChildPower {
 	//Need power name, mother power, father power, point values for str, agility, will, and fortitude, need base power popularity value, etc.
 	public string powerName { get; set; } 
-  public string description { get; set; }
+	public string description { get; set; }
 	public double strength { get; set; } //0 - 100
 	public double agility { get; set; } //0 - 100
 	public double will { get; set; }  //0 - 100
