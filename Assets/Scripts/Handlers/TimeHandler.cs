@@ -57,7 +57,7 @@ public class TimeHandler : MonoBehaviour {
   public static void handleWeek () {
     int weekDay = GlobalData.globalData.weekDay;
 
-    GlobalData.globalData.weekDayName = GlobalData.globalData.WeekDayNameArray[weekDay];
+    GlobalData.globalData.weekDayName = GlobalData.globalData.weekDayNameArray[weekDay];
   }
 
   public static void handleCycleChange (string action) {

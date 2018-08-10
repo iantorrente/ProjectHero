@@ -5,22 +5,22 @@ using Newtonsoft.Json;
 using UnityEngine;
 
 //Handles serializing and deserializing JSON files
-public class DataInitializer : MonoBehaviour {
-  public class FatherName {
+public class JsonDeserializer : MonoBehaviour {
+  private class FatherName {
     public string[] firstNames;
     public string[] lastNames;
   }
 
-  public class MotherName {
+  private class MotherName {
     public string[] firstNames;
   }
 
-  public struct Nicknames {
+  private struct Nicknames {
     public string name;
     public string[] nicknames;
   }
 
-  public class ParentNickname {
+  private class ParentNickname {
     public Nicknames[] nicknames;
   }
   

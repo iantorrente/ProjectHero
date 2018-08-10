@@ -14,4 +14,12 @@ public class JobHandler : MonoBehaviour {
     Will most likely take generic jobs from a JSON file and then
     interpret the fields to be created as jobs
   */
+
+  /*
+    Probably generate jobs each day so that jobs can be reflective
+    of what's happening in the game world
+  */
+  public static void generateJobs () {
+    
+  }
 }

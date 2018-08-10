@@ -8,11 +8,12 @@
 1) **ChildPower.cs** (generates child power based on passed in parent's powers. Data inside here is placeholder right now.)
 2) **ParentalPower.cs** (generates parent powers based on passed in string from an array of powers)
 3) **DataInitializer.cs** (generates father/mother names and nicknames from JSON. Will probably be generified so any path to a JSON file can be passed and it gets deserialized)
+4) **DataSetter.cs** (generates persistent global/player data. Should be run only after the player accepts their character at creation)
 
 ### ACTION HANDLERS:
 1) **CityHandler.cs** (handles all buttons)
 2) **MainMenuHandler.cs** (handles main menu buttons and will handle loading/deleting save files in the future. Could probably just have this in CityHandler.cs as well)
-3) **SavePlayerHandler.cs** (handles saving the player's character into persistent data in the character creation. Could rethink the way this is handled)
+3) **SavePlayerHandler.cs** (handles saving the player's character into persistent data in the character creation. Could rethink the way this is handled. Also handles setting persistent global/player data)
 
 ### SYSTEMS CLASSES:
 1) **EnergyHandler.cs** (handles stamina calculations)

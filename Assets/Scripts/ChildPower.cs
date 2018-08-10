@@ -82,10 +82,4 @@ public class ChildPower {
 
     return attributesArray;
   }
-
-	//Need to create methods that take parents' attributes (strength, agility, etc.) and create the child's attribute based on them
-
-	/*Could create a table of set data for child powers and which parental powers make it. Attributes have their ranges and are used
-	by this constructor to generate the final child power
-	*/
 }

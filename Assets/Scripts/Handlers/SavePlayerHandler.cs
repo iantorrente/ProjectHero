@@ -11,6 +11,8 @@ public class SavePlayerHandler : MonoBehaviour {
     if (!Main.canSave) {
       Debug.Log("Must choose father and mother powers first");
     } else {
+      DataSetter.setGlobalData();
+      DataSetter.setPlayerData();
       SceneManager.LoadScene("The City", LoadSceneMode.Single);
     }
   }
