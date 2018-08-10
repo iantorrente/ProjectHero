@@ -41,6 +41,9 @@ public class DisplayData : MonoBehaviour {
       "Population: " + GlobalData.globalData.generalPopulation
       + "\nRegistered Heroes: " + GlobalData.globalData.heroPopulation
       + "\nKnown Villains: " + GlobalData.globalData.villainPopulation
+      + "\nRegistered Criminals: " + GlobalData.globalData.criminalPopulation
+      + "\nCitizens Considered Impoverished: " + GlobalData.globalData.impoverishedPopulation
+      + "\nRegistered Homeless: " + GlobalData.globalData.homelessPopulation
       + "\nBirths per day: " + popBirth
       + "\nDeaths per day: " + popDeath
       + "\nYearly Violent Crime Rate per 1,000 Residents: " + GlobalData.yearlyViolentCrimeRate * 100 + "%"

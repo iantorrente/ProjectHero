@@ -17,14 +17,20 @@ public class DataSetter : MonoBehaviour {
     GlobalData.yearlyDeathRate = 0.008f;
     GlobalData.yearlyViolentCrimeRate = 0.00735f;
     GlobalData.yearlyPropertyCrimeRate = 0.0256f;
-    GlobalData.globalData.dailyBirthRate = GlobalData.yearlyBirthRate / 112;
-    GlobalData.globalData.dailyDeathRate = GlobalData.yearlyDeathRate / 112;
-    GlobalData.globalData.dailyVCRate = GlobalData.yearlyViolentCrimeRate / 112;
-    GlobalData.globalData.dailyPCRate = GlobalData.yearlyPropertyCrimeRate / 112;
+    GlobalData.globalData.dailyBirthRate = GlobalData.yearlyBirthRate / 336;
+    GlobalData.globalData.dailyDeathRate = GlobalData.yearlyDeathRate / 336;
+    GlobalData.globalData.dailyVCRate = GlobalData.yearlyViolentCrimeRate / 336;
+    GlobalData.globalData.dailyPCRate = GlobalData.yearlyPropertyCrimeRate / 336;
     GlobalData.globalData.dayCycle = "Morning";
     GlobalData.globalData.weekDayName = "Monday";
+    GlobalData.globalData.monthName = "January";
     GlobalData.globalData.weekDayNameArray = new string[] {
-      "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+      "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
+      "Saturday", "Sunday"
+    };
+    GlobalData.globalData.monthNameArray = new string[] {
+      "January", "February", "March", "April", "May", "June", 
+      "July", "August", "September", "October", "November", "December"
     };
   }
 

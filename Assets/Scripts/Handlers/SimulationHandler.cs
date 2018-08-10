@@ -10,14 +10,15 @@ public class SimulationHandler : MonoBehaviour {
   }
 
   private static void handlePopulation () {
-    int increasePop = (int)(GlobalData.globalData.generalPopulation * GlobalData.globalData.dailyBirthRate);
-    int decreasePop = (int)(GlobalData.globalData.generalPopulation * GlobalData.globalData.dailyDeathRate);
-    GlobalData.globalData.generalPopulation += (increasePop - decreasePop);
-    Debug.Log("Births today: " + increasePop + "\nDeaths today: " + decreasePop + "\nTotal population: " + GlobalData.globalData.generalPopulation);
+    int popBirth = (int)(GlobalData.globalData.generalPopulation * GlobalData.globalData.dailyBirthRate);
+    int popDeath = (int)(GlobalData.globalData.generalPopulation * GlobalData.globalData.dailyDeathRate);
+    GlobalData.globalData.generalPopulation += (popBirth - popDeath);
+    Debug.Log("Births today: " + popBirth + "\nDeaths today: " + popDeath + "\nTotal population: " + GlobalData.globalData.generalPopulation);
   }
 
   private static void handleCrimes () {
-    //Based on the number of criminals, the crime rate, and the last instance of a serious reported crime, generate crimes
+    //Based on the number of criminals, the crime rate, and the last 
+    //instance of a serious reported crime, generate crimes
     //Also generate 'crime waves' that can sporadically happen
     int criminalPopulation = GlobalData.globalData.criminalPopulation;
     int generalPopulation = GlobalData.globalData.generalPopulation;

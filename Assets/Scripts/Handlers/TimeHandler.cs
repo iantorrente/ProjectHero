@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 //Handles the flow of time. 
 //handleDayChange() progresses the day by 1 and 
 public class TimeHandler : MonoBehaviour {
-  static double days;
-  static double months;
-  static bool isInteger;
+  private static double days;
+  private static double months;
+  private static bool isInteger;
   
   public static void handleDayChange (string action) {
     //Run SimulationHandler.handleSimulation() here
@@ -41,22 +41,22 @@ public class TimeHandler : MonoBehaviour {
   public static void handleMonthChange () {
     GlobalData.globalData.months += 1;
     GlobalData.globalData.days = 0;
-    months = (double)GlobalData.globalData.months / 12;
-    isInteger = unchecked(months == (int)months);
-    if (isInteger && months != 0) {
+
+    if (GlobalData.globalData.months == 12) {
+      GlobalData.globalData.months = 0;
       handleYearChange();
     }
+    GlobalData.globalData.monthName = GlobalData.globalData.monthNameArray[GlobalData.globalData.months];
+    Debug.Log(GlobalData.globalData.monthName);
   }
 
   public static void handleYearChange () {
     GlobalData.globalData.years += 1;
-    GlobalData.globalData.months = 0;
   }
 
   //TODO: work on week handler for calendar system
   public static void handleWeek () {
     int weekDay = GlobalData.globalData.weekDay;
-
     GlobalData.globalData.weekDayName = GlobalData.globalData.weekDayNameArray[weekDay];
   }
 

@@ -7,21 +7,21 @@ using UnityEngine;
 //Handles serializing and deserializing JSON files
 public class JsonDeserializer : MonoBehaviour {
   private class FatherName {
-    public string[] firstNames;
-    public string[] lastNames;
+    public string[] firstNames { get; set; }
+    public string[] lastNames { get; set; }
   }
 
   private class MotherName {
-    public string[] firstNames;
+    public string[] firstNames { get; set; }
   }
 
   private struct Nicknames {
-    public string name;
-    public string[] nicknames;
+    public string name { get; set; }
+    public string[] nicknames { get; set; }
   }
 
   private class ParentNickname {
-    public Nicknames[] nicknames;
+    public Nicknames[] nicknames { get; set; }
   }
   
   //Deserializes the JSON file in the path 'fatherNamePath'. Can be used to deserialize all data, not just the father one

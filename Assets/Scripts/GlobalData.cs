@@ -6,9 +6,9 @@ using UnityEngine;
 public class GlobalData : MonoBehaviour {
   public static GlobalData globalData;
   public int years { get; set; }
-  public int months { get; set; }
+  public int months;
   public int weekDay { get; set; }
-  public int days { get; set; }
+  public int days;
   public int generalPopulation { get; set; } //Arbitrary values for now 
   public int heroPopulation { get; set; } //Arbitrary values for now 
   public int villainPopulation { get; set; } //Arbitrary values for now 
@@ -27,7 +27,9 @@ public class GlobalData : MonoBehaviour {
   public float dailyPCRate { get; set; }
   public string dayCycle { get; set; }
   public string weekDayName { get; set; }
+  public string monthName { get; set; }
   public string[] weekDayNameArray { get; set; }
+  public string[] monthNameArray { get; set; }
 
   void Awake () {
     if (globalData == null) {
