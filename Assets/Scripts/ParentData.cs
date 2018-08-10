@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+//Delete after being used by the character creation
 public class ParentData : MonoBehaviour {
     public string[] fatherFirstNames;
     public string[] fatherLastNames;

@@ -8,7 +8,8 @@ public class PlayerData : MonoBehaviour {
   public ParentalPower motherPower;
   public string playerName;
   public double money;
-  public int stamina = 4;
+  public int baseStamina = 3;
+  public int stamina = 3;
   public static PlayerData playerData;
   //Make a new health field that tracks health as a string (healthy, fatigued, exhausted, etc.)
 

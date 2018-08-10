@@ -60,21 +60,21 @@ public class TimeHandler : MonoBehaviour {
     GlobalData.globalData.weekDayName = GlobalData.globalData.WeekDayNameArray[weekDay];
   }
 
-  //Make it so that it takes a string of what type of action was made "training", "job", "sleep", etc. and judge what to do from there
   public static void handleCycleChange (string action) {
     string dayCycle = GlobalData.globalData.dayCycle;
     if (action == "nap") {
       EnergyHandler.handleEnergy(action);
-    } else if (action == "training" && dayCycle != "Night") {
+    } else if (action == "training" && dayCycle != "Midnight") {
       EnergyHandler.handleEnergy(action);
     }
 
-    //Check if the player napped. If they did then give them some energy back
     if (dayCycle == "Morning") {
       GlobalData.globalData.dayCycle = "Afternoon";
     } else if (dayCycle == "Afternoon") {
-      GlobalData.globalData.dayCycle = "Night";
-    } else if (dayCycle == "Night") {
+      GlobalData.globalData.dayCycle = "Evening";
+    } else if (dayCycle == "Evening") {
+      GlobalData.globalData.dayCycle = "Midnight";
+    } else if (dayCycle == "Midnight") {
       handleDayChange(action);
     }
 

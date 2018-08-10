@@ -43,6 +43,11 @@ public class DisplayData : MonoBehaviour {
       + "\nKnown Villains: " + GlobalData.globalData.villainPopulation
       + "\nBirths per day: " + popBirth
       + "\nDeaths per day: " + popDeath
+      + "\nYearly Violent Crime Rate per 1,000 Residents: " + GlobalData.yearlyViolentCrimeRate * 100 + "%"
+      + "\nYearly Property Crime Rate per 1,000 Residents: " + GlobalData.yearlyPropertyCrimeRate * 100 + "%"
+      + "\nVictims of Violent Crimes: " + GlobalData.globalData.victimsOfVC
+      + "\nVictims of Property Crimes: " + GlobalData.globalData.victimsOfPC
+
     );
   }
 
