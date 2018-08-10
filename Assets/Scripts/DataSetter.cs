@@ -35,6 +35,9 @@ public class DataSetter : MonoBehaviour {
   }
 
   public static void setPlayerData () {
+    PlayerData.playerData.playerPower = Main.childPower;
+    PlayerData.playerData.fatherPower = Main.fatherPower;
+    PlayerData.playerData.motherPower = Main.motherPower;
     PlayerData.playerData.baseStamina = 3;
     PlayerData.playerData.stamina = 3;
   }
