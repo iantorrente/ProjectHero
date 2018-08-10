@@ -4,21 +4,16 @@ using UnityEngine;
 
 //Delete after being used by the character creation
 public class ParentData : MonoBehaviour {
-    public string[] fatherFirstNames;
-    public string[] fatherLastNames;
-    public string[] motherFirstNames;
-    public string[] strengthNicknames;
-    public string[] agilityNicknames;
-    public string[] willNicknames;
-    public string[] fortitudeNicknames;
     public static ParentData parentData;
+    public string[] fatherFirstNames { get; set; }
+    public string[] fatherLastNames { get; set; }
+    public string[] motherFirstNames { get; set; }
+    public string[] strengthNicknames { get; set; }
+    public string[] agilityNicknames { get; set; }
+    public string[] willNicknames { get; set; }
+    public string[] fortitudeNicknames { get; set; }
 
     void Awake () {
-		if (parentData == null) {
-      DontDestroyOnLoad(gameObject);
       parentData = this;
-    } else if (parentData != this) {
-      Destroy(gameObject);
-    }
 	}
 }
