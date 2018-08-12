@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Handles ALL of the global simulation stuff
+//Contains population simulater and crime simulater || 8/10/18
 public class SimulationHandler : MonoBehaviour {
   public static void handleSimulation () {
     handlePopulation();
     handleCrimes();
+    WeatherHandler.handleWeather();
   }
 
   private static void handlePopulation () {
@@ -25,7 +27,7 @@ public class SimulationHandler : MonoBehaviour {
     float violentCrimeRate = Random.Range(0, GlobalData.globalData.dailyVCRate);
     float propertyCrimeRate = Random.Range(0, GlobalData.globalData.dailyPCRate);
 
-    //Calculate number of victims by multipling crime rate with general pop
+    //Calculate number of victims by multiplying crime rate with general pop
     int vCVictims = (int)(generalPopulation * violentCrimeRate);
     int pCVictims = (int)(generalPopulation * propertyCrimeRate);
     GlobalData.globalData.victimsOfVC += vCVictims;

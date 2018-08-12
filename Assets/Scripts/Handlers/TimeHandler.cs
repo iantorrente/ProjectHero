@@ -7,12 +7,8 @@ using UnityEngine.SceneManagement;
 //Handles the flow of time. 
 //handleDayChange() progresses the day by 1 and 
 public class TimeHandler : MonoBehaviour {
-  private static double days;
-  private static double months;
-  private static bool isInteger;
   
   public static void handleDayChange (string action) {
-    //Run SimulationHandler.handleSimulation() here
     if (action == "sleep") {
       EnergyHandler.handleEnergy(action);
     } else if (action == "nap") {
@@ -29,13 +25,18 @@ public class TimeHandler : MonoBehaviour {
     }
     handleWeek();
     
-    days = (double)GlobalData.globalData.days / 28;
-    isInteger = unchecked(days == (int)days);
-    if (isInteger) {
+    if (GlobalData.globalData.days == 29) {
       handleMonthChange();
     }
     SimulationHandler.handleSimulation();
+    //Generate jobs after running the simulation so that
+    //jobs can react to global dynamic events
     SceneManager.LoadScene("The City", LoadSceneMode.Single);
+  }
+
+  public static void handleWeek () {
+    int weekDay = GlobalData.globalData.weekDay;
+    GlobalData.globalData.weekDayName = GlobalData.globalData.weekDayNameArray[weekDay];
   }
 
   public static void handleMonthChange () {
@@ -47,17 +48,27 @@ public class TimeHandler : MonoBehaviour {
       handleYearChange();
     }
     GlobalData.globalData.monthName = GlobalData.globalData.monthNameArray[GlobalData.globalData.months];
+    handleSeasonChange();
     Debug.Log(GlobalData.globalData.monthName);
+    Debug.Log(GlobalData.globalData.seasonName);
   }
 
   public static void handleYearChange () {
     GlobalData.globalData.years += 1;
   }
 
-  //TODO: work on week handler for calendar system
-  public static void handleWeek () {
-    int weekDay = GlobalData.globalData.weekDay;
-    GlobalData.globalData.weekDayName = GlobalData.globalData.weekDayNameArray[weekDay];
+  public static void handleSeasonChange () {
+    int month = GlobalData.globalData.months;
+
+    if (month == 0 || month == 1 || month == 2) {
+      GlobalData.globalData.seasonName = "Spring";
+    } else if (month == 3 || month == 4 || month == 5) {
+      GlobalData.globalData.seasonName = "Summer";
+    } else if (month == 6 || month == 7 || month == 8) {
+      GlobalData.globalData.seasonName = "Autumn";
+    } else if (month == 9 || month == 10 || month == 11) {
+      GlobalData.globalData.seasonName = "Winter";
+    }
   }
 
   public static void handleCycleChange (string action) {

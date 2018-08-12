@@ -11,13 +11,8 @@ public class Main : MonoBehaviour {
   public static ParentalPower fatherPower;
   public static ParentalPower motherPower;
 
-  // void Awake () {
-  //   DataInitializer.deserializeJson();
-  // }
-
 	//This is getting cluttered. Might want to start migrating stuff to other methods or classes
 	public void buttonClick () {
-    //Figures out which button was clicked
 		string pressedButton = EventSystem.current.currentSelectedGameObject.name;
 
     if (pressedButton == "Exit") {

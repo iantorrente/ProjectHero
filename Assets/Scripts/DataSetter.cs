@@ -7,6 +7,7 @@ public class DataSetter : MonoBehaviour {
   public static void setGlobalData () {
     //All these numbers are placeholders. They'll be tweaked
     //based on gameplay balances
+    GlobalData.globalData.serialKillerActive = false;
     GlobalData.globalData.generalPopulation = Random.Range(450000, 500000);
     GlobalData.globalData.heroPopulation = Random.Range(99, 110);
     GlobalData.globalData.villainPopulation = Random.Range(100, 120);
@@ -24,6 +25,8 @@ public class DataSetter : MonoBehaviour {
     GlobalData.globalData.dayCycle = "Morning";
     GlobalData.globalData.weekDayName = "Monday";
     GlobalData.globalData.monthName = "January";
+    GlobalData.globalData.seasonName = "Spring";
+    GlobalData.globalData.weatherName = "Sunny";
     GlobalData.globalData.weekDayNameArray = new string[] {
       "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
       "Saturday", "Sunday"
