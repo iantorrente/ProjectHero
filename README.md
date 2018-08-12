@@ -1,4 +1,4 @@
-# Project Hero v0.1.10
+# Project Hero v0.1.11
 ### PERSISTENT DATA CLASSES:
 1) **PlayerData.cs** (contains data related to the player)
 2) **GlobalData.cs** (contains data related to the world)
