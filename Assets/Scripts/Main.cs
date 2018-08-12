@@ -6,13 +6,17 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour {
-	public GameObject canvas;
   public static bool canSave = false;
   public static ChildPower childPower;
   public static ParentalPower fatherPower;
   public static ParentalPower motherPower;
-	//Can reduce to one button method. Just need to figrue out how to see which button made the press
-	public void ButtonClick () {
+
+  // void Awake () {
+  //   DataInitializer.deserializeJson();
+  // }
+
+	//This is getting cluttered. Might want to start migrating stuff to other methods or classes
+	public void buttonClick () {
     //Figures out which button was clicked
 		string pressedButton = EventSystem.current.currentSelectedGameObject.name;
 
@@ -23,41 +27,47 @@ public class Main : MonoBehaviour {
 		string[] parentalPowerArray = generateParentalPowers();
 		//Need to see if there's a way to get a truly random bunch of numbers
 		int i = Random.Range(0, parentalPowerArray.Length);
+    int j = Random.Range(0, ParentData.parentData.fatherFirstNames.Length);
+    int k = Random.Range(0, ParentData.parentData.fatherLastNames.Length);
+    string lastName = ParentData.parentData.fatherLastNames[k]; //Gonna need to make last name adapt to what the father's last name was
+    string fatherName = ParentData.parentData.fatherFirstNames[j] + " " + lastName;
+    string motherName = ParentData.parentData.motherFirstNames[j] + " " + lastName;
 		string parentalPower = parentalPowerArray[i];
+    
 		if (pressedButton == "FatherButton") {
 			fatherPower = new ParentalPower(parentalPower);
 			GameObject.Find("Father").GetComponent<Text>().text = (
-			fatherPower.PowerName + "\nSTATS:\n" 
-			+ "Strength: " + fatherPower.Strength
-			+ "\nAgility: " + fatherPower.Agility
-			+ "\nWill: " + fatherPower.Will
-			+ "\nFortitude: " + fatherPower.Fortitude
-			+ "\nPopularity: " + fatherPower.Popularity);
+			fatherPower.PowerName + "\n" + fatherName + "\nSTATS:\n" //Broken in an actual build
+			+ "Strength: " + fatherPower.strength
+			+ "\nAgility: " + fatherPower.agility
+			+ "\nWill: " + fatherPower.will
+			+ "\nFortitude: " + fatherPower.fortitude
+			+ "\nPopularity: " + fatherPower.popularity);
 		} else if (pressedButton == "MotherButton") {
 			motherPower = new ParentalPower(parentalPower);
 			GameObject.Find("Mother").GetComponent<Text>().text = (
-			motherPower.PowerName + "\nSTATS:\n" 
-			+ "Strength: " + motherPower.Strength
-			+ "\nAgility: " + motherPower.Agility
-			+ "\nWill: " + motherPower.Will
-			+ "\nFortitude: " + motherPower.Fortitude
-			+ "\nPopularity: " + motherPower.Popularity);
+			motherPower.PowerName + "\n" + motherName + "\nSTATS:\n" 
+			+ "Strength: " + motherPower.strength
+			+ "\nAgility: " + motherPower.agility
+			+ "\nWill: " + motherPower.will
+			+ "\nFortitude: " + motherPower.fortitude
+			+ "\nPopularity: " + motherPower.popularity);
 		}
 
     if (fatherPower != null && motherPower != null) {
-		  SetChildPower(fatherPower ,motherPower);
+		  setChildPower(fatherPower ,motherPower);
     }
 	}
 
-	public void SetChildPower (ParentalPower fPower, ParentalPower mPower) {
+	public void setChildPower (ParentalPower fPower, ParentalPower mPower) {
     childPower = new ChildPower(fPower, mPower);
-    GameObject.Find("Child Power Description").GetComponent<Text>().text = childPower.Description;
-    GameObject.Find("Child Power Name").GetComponent<Text>().text = childPower.PowerName;
+    GameObject.Find("Child Power Description").GetComponent<Text>().text = childPower.description;
+    GameObject.Find("Child Power Name").GetComponent<Text>().text = childPower.powerName;
 		GameObject.Find("Child").GetComponent<Text>().text = (
-    "Strength: " + childPower.Strength
-    + "\nAgility: " + childPower.Agility
-    + "\nWill: " + childPower.Will
-    + "\nFortitude: " + childPower.Fortitude);
+    "Strength: " + (int)childPower.strength
+    + "\nAgility: " + (int)childPower.agility
+    + "\nWill: " + (int)childPower.will
+    + "\nFortitude: " + (int)childPower.fortitude);
     canSave = true;
 	}
 
