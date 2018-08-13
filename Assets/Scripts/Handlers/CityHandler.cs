@@ -13,6 +13,14 @@ public class CityHandler : MonoBehaviour {
   }
 
   private void handleSceneChange (string pressedButton) {
+    //Moving in between broad city locations. Will probably be split
+    //into districts
+    if (pressedButton == "City2") {
+      SceneManager.LoadScene("The City 2", LoadSceneMode.Single);
+    } else if (pressedButton == "City1") {
+      SceneManager.LoadScene("The City", LoadSceneMode.Single);
+    }
+
     //Movement between locations inside the city
     if (pressedButton == "Agency") {
       SceneManager.LoadScene("Agency", LoadSceneMode.Single);
@@ -34,14 +42,19 @@ public class CityHandler : MonoBehaviour {
       SceneManager.LoadScene("Kofee Haus", LoadSceneMode.Single);
     } else if (pressedButton == "Back Button") {
       SceneManager.LoadScene("The City", LoadSceneMode.Single);
-    } 
+    }
 
-    //Moving in between broad city locations. Will probably be split
-    //into districts
-    if (pressedButton == "City2") {
-      SceneManager.LoadScene("The City 2", LoadSceneMode.Single);
-    } else if (pressedButton == "City1") {
-      SceneManager.LoadScene("The City", LoadSceneMode.Single);
+    //Movement inside of the Gym
+    //Will be deprecated because Gym UI will be changed through
+    //script and separate scenes won't be necessarry
+    if (pressedButton == "Free Training") {
+      SceneManager.LoadScene("Gym Free", LoadSceneMode.Single);
+    } else if (pressedButton == "Cheap Training") {
+      SceneManager.LoadScene("Gym Cheap", LoadSceneMode.Single);
+    } else if (pressedButton == "Normal Training") {
+      SceneManager.LoadScene("Gym Normal", LoadSceneMode.Single);
+    } else if (pressedButton == "Expensive Training") {
+      SceneManager.LoadScene("Gym Expensive", LoadSceneMode.Single);
     }
   }
 
