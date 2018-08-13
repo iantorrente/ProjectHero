@@ -19,6 +19,8 @@ public class GlobalData : MonoBehaviour {
   public int homelessPopulation { get; set; }
   public int victimsOfVC { get; set; }
   public int victimsOfPC { get; set; }
+  public int prevVictimsOfVC { get; set; }
+  public int prevVictimsOfPC { get; set; }
   public static float yearlyBirthRate { get; set; } //Based on world
   public static float yearlyDeathRate { get; set; } //Based on world
   public static float yearlyViolentCrimeRate { get; set; } //Based on Los Angeles

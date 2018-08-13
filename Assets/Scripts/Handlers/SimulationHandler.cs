@@ -32,6 +32,8 @@ public class SimulationHandler : MonoBehaviour {
     int pCVictims = (int)(generalPopulation * propertyCrimeRate);
     GlobalData.globalData.victimsOfVC += vCVictims;
     GlobalData.globalData.victimsOfPC += pCVictims;
+    GlobalData.globalData.prevVictimsOfVC = vCVictims; //Used in job handler
+    GlobalData.globalData.prevVictimsOfPC = pCVictims; //Used in job handler
 
     //Calculate what types of violent/property crimes happened that day based on the upper limit of how many victims there were on the day
     Debug.Log(vCVictims + " Victims of Violent Crimes Today" + "\n" + pCVictims + " Victims of Property Crimes Today");

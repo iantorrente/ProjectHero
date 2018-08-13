@@ -13,6 +13,7 @@ public class CityHandler : MonoBehaviour {
   }
 
   private void handleSceneChange (string pressedButton) {
+    //Movement between locations inside the city
     if (pressedButton == "Agency") {
       SceneManager.LoadScene("Agency", LoadSceneMode.Single);
     } else if (pressedButton == "Gym") {
@@ -27,9 +28,21 @@ public class CityHandler : MonoBehaviour {
       SceneManager.LoadScene("City Hall", LoadSceneMode.Single);
     } else if (pressedButton == "Library") {
       SceneManager.LoadScene("Library", LoadSceneMode.Single);
+    } else if (pressedButton == "Police Station") {
+      SceneManager.LoadScene("Police Station", LoadSceneMode.Single);
+    } else if (pressedButton == "Kofee Haus") {
+      SceneManager.LoadScene("Kofee Haus", LoadSceneMode.Single);
     } else if (pressedButton == "Back Button") {
       SceneManager.LoadScene("The City", LoadSceneMode.Single);
     } 
+
+    //Moving in between broad city locations. Will probably be split
+    //into districts
+    if (pressedButton == "City2") {
+      SceneManager.LoadScene("The City 2", LoadSceneMode.Single);
+    } else if (pressedButton == "City1") {
+      SceneManager.LoadScene("The City", LoadSceneMode.Single);
+    }
   }
 
   private void handleActions (string pressedButton) {
@@ -41,6 +54,7 @@ public class CityHandler : MonoBehaviour {
     }
 
     //Gym Actions
+    //TODO: Split training into free, cheap, normal, and expensive
     if (pressedButton == "Strength Training") {
       TrainingHandler.handleTraining("strength");
     } else if (pressedButton == "Agility Training") {
@@ -56,7 +70,13 @@ public class CityHandler : MonoBehaviour {
 
     //Agency Actions
     if (pressedButton == "Find Job") {
-      Debug.Log("Sorry hero, there isn't anything yet.");
+      JobHandler.generateAgencyJobs();
+      //Debug.Log("Sorry hero, there isn't anything yet.");
+    }
+
+    //Moonlight Jobs Actions
+    if (pressedButton == "KofeeHausWork") {
+      JobHandler.handleMoonlight(pressedButton);
     }
   }
 }

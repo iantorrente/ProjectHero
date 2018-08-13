@@ -75,6 +75,8 @@ public class TimeHandler : MonoBehaviour {
     string dayCycle = GlobalData.globalData.dayCycle;
     if (action == "nap") {
       EnergyHandler.handleEnergy(action);
+    } else if (action == "job") {
+      EnergyHandler.handleEnergy(action);
     } else if (action == "training" && dayCycle != "Midnight") {
       EnergyHandler.handleEnergy(action);
     }

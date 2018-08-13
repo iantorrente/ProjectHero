@@ -45,6 +45,8 @@ public class EnergyHandler : MonoBehaviour {
       } else if (action == "training") {
         //If the player is unhealthy take away more stamina
         stamina -= 1;
+      } else if (action == "job") {
+        stamina -= 1;
       }
     }
     PlayerData.playerData.stamina = stamina;
