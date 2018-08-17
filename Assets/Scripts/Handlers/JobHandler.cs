@@ -52,8 +52,10 @@ public class JobHandler : MonoBehaviour {
       if (job == "KofeeHausWork") {
         PlayerData.playerData.money += Helpers.calculateSalary(minimumWage, aMod); //Multiply by agility modifier
         StatsHandler.increasePopularity(5 * rMod);
+        StatsHandler.increaseStat("agility", (decimal)0.10);
         Debug.Log("You made $" + String.Format("{0:0.00}", Helpers.calculateSalary(minimumWage, aMod)) + " today!");
-        //Increase a stat by an amount
+      } else if (job == "") {
+        
       }
       
       TimeHandler.handleCycleChange("job");

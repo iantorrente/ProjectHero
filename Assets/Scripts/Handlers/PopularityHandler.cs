@@ -13,17 +13,14 @@ public class PopularityHandler : MonoBehaviour {
       "Nameless", "Whispered", "Known", "Recognized", "Respected", 
       "Hero", "Adored", "Loved", "Idolized", "Savior"
     };
-
-    int pArrayLength = popularityArray.Length;
-    int pIndex = Array.IndexOf(popularityArray, popularityTitle);
-    calculatePopularity(popularityArray, popularityTitle, pIndex, popularityExperience);
+    calculatePopularity(popularityArray, popularityTitle, popularityExperience);
     Debug.Log(PlayerData.playerData.popularityTitle);
     Debug.Log("Popularity Experience: " + popularityExperience);
   }
 
 
   //Need to find a more efficient way to do this
-  private static void calculatePopularity (string[] pArray, string pTitle, int pIndex, decimal pExp) {
+  private static void calculatePopularity (string[] pArray, string pTitle, decimal pExp) {
     bool isPositive = Helpers.isPositive(pExp);
     decimal rModifier = 0;
     if (isPositive) {

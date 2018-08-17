@@ -45,6 +45,7 @@ public class DataSetter : MonoBehaviour {
     PlayerData.playerData.playerPower = Main.childPower;
     PlayerData.playerData.fatherPower = Main.fatherPower;
     PlayerData.playerData.motherPower = Main.motherPower;
+    PlayerData.playerData.fans = 0;
     PlayerData.playerData.money = 500;
     PlayerData.playerData.popularityTitle = "Nameless";
     PlayerData.playerData.popularityExperience = 0;

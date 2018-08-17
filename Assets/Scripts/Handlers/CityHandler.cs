@@ -95,6 +95,15 @@ public class CityHandler : MonoBehaviour {
     //Moonlight Jobs Actions
     if (pressedButton == "KofeeHausWork") {
       JobHandler.handleMoonlight(pressedButton);
+    } else if (pressedButton == "") {
+      JobHandler.handleMoonlight(pressedButton);
+      //strength job
+    } else if (pressedButton == "") {
+      JobHandler.handleMoonlight(pressedButton);
+      //fortitude job
+    } else if (pressedButton == "") {
+      JobHandler.handleMoonlight(pressedButton);
+      //will job
     }
   }
 }
