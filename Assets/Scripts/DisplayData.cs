@@ -32,6 +32,7 @@ public class DisplayData : MonoBehaviour {
       + "\nFortitude: " + (int)playerPower.fortitude
       + "\nTime: " + GlobalData.globalData.years + " years, " + GlobalData.globalData.months + " months, " + GlobalData.globalData.days + " days"
       + "\nMoney: $" + PlayerData.playerData.money
+      + "\nPopularity: " + PlayerData.playerData.popularityTitle
     );
   }
 

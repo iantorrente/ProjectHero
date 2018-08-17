@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class TimeHandler : MonoBehaviour {
   
   public static void handleDayChange (string action) {
+    //SavePlayerHandler.saveCharacter();
     if (action == "sleep") {
       EnergyHandler.handleEnergy(action);
     } else if (action == "nap") {

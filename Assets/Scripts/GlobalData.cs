@@ -4,8 +4,9 @@ using UnityEngine;
 
 //Hold all of the global variables in here, things like population, death rates, prices, healthiness levels of The City/its districts, hero populations, crime rate, etc.
 //Start splitting these off and categorizing them by their system (weather, crime, population, etc.)
+[System.Serializable] //Can't serialize a Monobehaviour
 public class GlobalData : MonoBehaviour {
-  public static GlobalData globalData;
+  public static GlobalData globalData { get; set; }
   public bool serialKillerActive { get; set; }
   public int years { get; set; }
   public int months;
@@ -34,6 +35,7 @@ public class GlobalData : MonoBehaviour {
   public string monthName { get; set; }
   public string seasonName { get; set; }
   public string weatherName { get; set; }
+  public string[] calendarEvents { get; set; }
   public string[] weekDayNameArray { get; set; }
   public string[] monthNameArray { get; set; }
 

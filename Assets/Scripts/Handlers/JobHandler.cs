@@ -22,9 +22,9 @@ public class JobHandler : MonoBehaviour {
   public static void generateAgencyJobs () {
     //Need to create a class for jobs so that I can store each job
     //generated in here as an array of jobs
-    int maxJobs = 5;
-    int vCJobs = Mathf.RoundToInt(GlobalData.globalData.prevVictimsOfVC/3);
-    int pCJobs = Mathf.RoundToInt(GlobalData.globalData.prevVictimsOfPC/10);
+    int maxJobs = 5; //Number of displayed jobs
+    int vCJobs = Mathf.RoundToInt(GlobalData.globalData.prevVictimsOfVC / 3);
+    int pCJobs = Mathf.RoundToInt(GlobalData.globalData.prevVictimsOfPC / 10);
     int humanitarianJobs;
     int heroJobs;
     int corporateJobs;
@@ -39,14 +39,18 @@ public class JobHandler : MonoBehaviour {
   //begin to help train your stats
   public static void handleMoonlight (string job) {
     decimal playerMoney = PlayerData.playerData.money;
+    bool hasStamina = Helpers.hasStamina(PlayerData.playerData.stamina);
 
-    if (job == "KofeeHausWork") {
-      double salary = 13.25;
-      PlayerData.playerData.money = decimal.Add(playerMoney, (decimal)salary);
-      //Increase a stat by an amount
-      Debug.Log("You work at Kofee Haus for a shift and earned $" + salary);
-    }
+    if (hasStamina) {
+      if (job == "KofeeHausWork") {
+        PlayerData.playerData.money += (decimal)13.25;
+        //Increase a stat by an amount
+      }
       
-    TimeHandler.handleCycleChange("job");
+      TimeHandler.handleCycleChange("job");
+    } else {
+      Debug.Log("You're much too tired to be working right now");
+    }
+    
   }
 }

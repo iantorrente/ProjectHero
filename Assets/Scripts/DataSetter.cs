@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 //Sets the global persistent data before the player gets into the game
 public class DataSetter : MonoBehaviour {
@@ -27,6 +28,8 @@ public class DataSetter : MonoBehaviour {
     GlobalData.globalData.monthName = "January";
     GlobalData.globalData.seasonName = "Spring";
     GlobalData.globalData.weatherName = "Sunny";
+    
+    //Don't need to store this in persistent data
     GlobalData.globalData.weekDayNameArray = new string[] {
       "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
       "Saturday", "Sunday"
@@ -43,8 +46,9 @@ public class DataSetter : MonoBehaviour {
     PlayerData.playerData.motherPower = Main.motherPower;
     PlayerData.playerData.money = 500;
     PlayerData.playerData.popularityTitle = "Nameless";
-    PlayerData.playerData.popularity = 0;
+    PlayerData.playerData.popularityExperience = 0;
     PlayerData.playerData.baseStamina = 3;
     PlayerData.playerData.stamina = 3;
+    PlayerData.playerData.healthinessIndex = 0;
   }
 }

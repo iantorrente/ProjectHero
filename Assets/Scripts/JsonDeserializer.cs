@@ -4,12 +4,12 @@ using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
 
-//Handles serializing and deserializing JSON files
+//Handles deserializing JSON files
 public class JsonDeserializer : MonoBehaviour {
   private class ParentNames {
-    public string[] fFirstNames;
-    public string[] mFirstNames;
-    public string[] lastNames;
+    public string[] fFirstNames {get; set; }
+    public string[] mFirstNames {get; set; }
+    public string[] lastNames {get; set; }
   }
 
   private struct Nicknames {
@@ -38,6 +38,7 @@ public class JsonDeserializer : MonoBehaviour {
   ParentData.parentData.agilityNicknames = nNameCollection.nicknames[1].nicknames;
   ParentData.parentData.willNicknames = nNameCollection.nicknames[2].nicknames;
   ParentData.parentData.fortitudeNicknames = nNameCollection.nicknames[3].nicknames;
+  Debug.Log(parentNames.fFirstNames[0]);
   }
 
   //Create a method to generically deserialize any json file

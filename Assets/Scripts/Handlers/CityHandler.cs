@@ -42,6 +42,8 @@ public class CityHandler : MonoBehaviour {
       SceneManager.LoadScene("Kofee Haus", LoadSceneMode.Single);
     } else if (pressedButton == "Back Button") {
       SceneManager.LoadScene("The City", LoadSceneMode.Single);
+    } else if (pressedButton == "Gym Back") {
+      SceneManager.LoadScene("Gym", LoadSceneMode.Single);
     }
 
     //Movement inside of the Gym
@@ -63,7 +65,10 @@ public class CityHandler : MonoBehaviour {
     if (pressedButton == "Nap") {
       TimeHandler.handleCycleChange("nap");
     } else if (pressedButton == "Sleep") {
+      PopularityHandler.handlePopularity();
       TimeHandler.handleDayChange("sleep");
+    } else if (pressedButton == "Calendar") {
+      SceneManager.LoadScene("Calendar", LoadSceneMode.Single);
     }
 
     //Gym Actions

@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 //Might want to rework this flow. It gets convoluted and too complex
 public class TrainingHandler : MonoBehaviour {
   public static bool tooPoor { get; set; }
+
   public static void handleTraining (string action) {
     int stamina = PlayerData.playerData.stamina;
+    bool hasStamina = Helpers.hasStamina(stamina);
     string activeScene = SceneManager.GetActiveScene().name;
     tooPoor = false;
     
@@ -32,7 +34,7 @@ public class TrainingHandler : MonoBehaviour {
       } else {
         Debug.Log("You\'re too poor, kid");
       }
-    } else if (stamina == 0) {
+    } else if (!hasStamina) {
       Debug.Log("Now is not the time to be training, " + PlayerData.playerData.playerPower.powerName);
     }
   }
