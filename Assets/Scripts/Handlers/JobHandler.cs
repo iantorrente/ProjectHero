@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,12 +39,20 @@ public class JobHandler : MonoBehaviour {
   //Moonlighting gives minimal money compared to hero jobs but they do
   //begin to help train your stats
   public static void handleMoonlight (string job) {
+    decimal rMod = PlayerData.playerData.renownModifier;
+    decimal sMod = PlayerData.playerData.strengthModifier;
+    decimal aMod = PlayerData.playerData.agilityModifier;
+    decimal wMod = PlayerData.playerData.willModifier;
+    decimal fMod = PlayerData.playerData.fortitudeModifier;
     decimal playerMoney = PlayerData.playerData.money;
+    decimal minimumWage = GlobalData.globalData.minimumWage;
     bool hasStamina = Helpers.hasStamina(PlayerData.playerData.stamina);
 
     if (hasStamina) {
       if (job == "KofeeHausWork") {
-        PlayerData.playerData.money += (decimal)13.25;
+        PlayerData.playerData.money += Helpers.calculateSalary(minimumWage, aMod); //Multiply by agility modifier
+        StatsHandler.increasePopularity(5 * rMod);
+        Debug.Log("You made $" + String.Format("{0:0.00}", Helpers.calculateSalary(minimumWage, aMod)) + " today!");
         //Increase a stat by an amount
       }
       

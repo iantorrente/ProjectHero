@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -31,7 +30,7 @@ public class DisplayData : MonoBehaviour {
       + "\nWill: " + (int)playerPower.will
       + "\nFortitude: " + (int)playerPower.fortitude
       + "\nTime: " + GlobalData.globalData.years + " years, " + GlobalData.globalData.months + " months, " + GlobalData.globalData.days + " days"
-      + "\nMoney: $" + PlayerData.playerData.money
+      + "\nMoney: $" + String.Format("{0:0.00}", PlayerData.playerData.money)
       + "\nPopularity: " + PlayerData.playerData.popularityTitle
     );
   }

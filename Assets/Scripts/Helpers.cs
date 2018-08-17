@@ -18,4 +18,8 @@ public class Helpers : MonoBehaviour {
       return false;
     }
   }
+
+  public static decimal calculateSalary (decimal pay, decimal modifier) {
+    return pay + (pay * modifier);
+  }
 }

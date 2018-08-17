@@ -15,17 +15,17 @@ public class TrainingHandler : MonoBehaviour {
     
     if (stamina > 0) {
       if (action == "strength") {
-        PlayerData.playerData.playerPower.strength += handleTrainingLevel(activeScene);
+        StatsHandler.increaseStat(action, handleTrainingLevel(activeScene));
         Debug.Log("Strength" + PlayerData.playerData.playerPower.strength);
       } else if (action == "agility") {
-        PlayerData.playerData.playerPower.agility += handleTrainingLevel(activeScene);
+        StatsHandler.increaseStat(action, handleTrainingLevel(activeScene));
         Debug.Log("Agility" + PlayerData.playerData.playerPower.agility);
       } else if (action == "fortitude") {
-        PlayerData.playerData.playerPower.fortitude += handleTrainingLevel(activeScene);
+        StatsHandler.increaseStat(action, handleTrainingLevel(activeScene));
         Debug.Log("Fortitude" + PlayerData.playerData.playerPower.fortitude);
       } else if (action == "will") {
         //Will might just need to be handled differently than the physical ones
-        PlayerData.playerData.playerPower.will += handleTrainingLevel(activeScene);
+        StatsHandler.increaseStat(action, handleTrainingLevel(activeScene));
         Debug.Log(PlayerData.playerData.playerPower.will);
       }
 

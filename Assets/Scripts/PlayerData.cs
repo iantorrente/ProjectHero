@@ -13,6 +13,12 @@ public class PlayerData : MonoBehaviour {
   public string healthiness { get; set; }
   public decimal money { get; set; }
   public decimal popularityExperience { get; set; }
+  public decimal flatModifier { get; set; }
+  public decimal renownModifier { get; set; }
+  public decimal strengthModifier { get; set; }
+  public decimal agilityModifier { get; set; }
+  public decimal willModifier { get; set; }
+  public decimal fortitudeModifier { get; set; }
   public int healthinessIndex { get; set; }
   public int baseStamina { get; set; }
   public int stamina { get; set; }

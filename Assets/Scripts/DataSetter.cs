@@ -23,6 +23,7 @@ public class DataSetter : MonoBehaviour {
     GlobalData.globalData.dailyDeathRate = GlobalData.yearlyDeathRate / 336;
     GlobalData.globalData.dailyVCRate = GlobalData.yearlyViolentCrimeRate / 336;
     GlobalData.globalData.dailyPCRate = GlobalData.yearlyPropertyCrimeRate / 336;
+    GlobalData.globalData.minimumWage = (decimal)13.25;
     GlobalData.globalData.dayCycle = "Morning";
     GlobalData.globalData.weekDayName = "Monday";
     GlobalData.globalData.monthName = "January";
@@ -50,5 +51,11 @@ public class DataSetter : MonoBehaviour {
     PlayerData.playerData.baseStamina = 3;
     PlayerData.playerData.stamina = 3;
     PlayerData.playerData.healthinessIndex = 0;
+    PlayerData.playerData.flatModifier = (decimal)0.0275;
+    PlayerData.playerData.renownModifier = (decimal)0.05;
+    PlayerData.playerData.strengthModifier = Main.childPower.strength * PlayerData.playerData.flatModifier;
+    PlayerData.playerData.agilityModifier = Main.childPower.agility * PlayerData.playerData.flatModifier;
+    PlayerData.playerData.willModifier = Main.childPower.will * PlayerData.playerData.flatModifier;
+    PlayerData.playerData.fortitudeModifier = Main.childPower.fortitude * PlayerData.playerData.flatModifier;
   }
 }
