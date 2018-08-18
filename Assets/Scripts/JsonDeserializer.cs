@@ -28,13 +28,12 @@ public class JsonDeserializer : MonoBehaviour {
   string jobsJsonString = Resources.Load<TextAsset>("HeroJobs").ToString();
   string fJsonString = Resources.Load<TextAsset>("ParentNames").ToString(); 
   string nJsonString = Resources.Load<TextAsset>("Nicknames").ToString();
-  JobsCollection jobsCollection = JsonConvert.DeserializeObject<JobsCollection>(jobsJsonString);
+  HeroJobsCollection heroJobsCollection = JsonConvert.DeserializeObject<HeroJobsCollection>(jobsJsonString);
   ParentNames parentNames = JsonConvert.DeserializeObject<ParentNames>(fJsonString);
   ParentNickname nNameCollection = JsonConvert.DeserializeObject<ParentNickname>(nJsonString);
-
-  Debug.Log(jobsCollection.heroJobs[0].jobs[0].title);
   
   //Put them into persistent data
+  JobsData.jobsData.heroJobsCollection = heroJobsCollection;
   ParentData.parentData.fatherFirstNames = parentNames.fFirstNames;
   ParentData.parentData.fatherLastNames = parentNames.lastNames;
   ParentData.parentData.motherFirstNames = parentNames.mFirstNames;
@@ -42,7 +41,6 @@ public class JsonDeserializer : MonoBehaviour {
   ParentData.parentData.agilityNicknames = nNameCollection.nicknames[1].nicknames;
   ParentData.parentData.willNicknames = nNameCollection.nicknames[2].nicknames;
   ParentData.parentData.fortitudeNicknames = nNameCollection.nicknames[3].nicknames;
-  Debug.Log(parentNames.fFirstNames[0]);
   }
 
   //Create a method to generically deserialize any json file
