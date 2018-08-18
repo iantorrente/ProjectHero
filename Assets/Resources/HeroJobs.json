@@ -1,0 +1,59 @@
+{
+  "heroJobs": [
+    {
+      "renown": "Nameless",
+      "jobs": [
+        {
+          "type": "recurring",
+          "title": "A Day In the Life",
+          "description": "A schoolboy has been getting bullied recently. His parents are asking a superhero to accompany him to and from school to dissuade anyone from picking on him. While you may not be the best, at least you're something.",
+          "onSuccess": "",
+          "onFail": "",
+          "successesNeeded": 4,
+          "reward": "$10-$20, r15-r25",
+          "time": "Morning, Monday to Friday, 1 week"
+        },
+        {
+          "type": "contract",
+          "title": "",
+          "description": "",
+          "onSuccess": "",
+          "onFail": "",
+          "successesNeeded": 1,
+          "reward": "",
+          "time": ""
+        }
+      ]
+    },
+    {
+      "renown": "Whispered",
+      "jobs": [
+        {
+          "type": "",
+          "title": "",
+          "description": "",
+          "onSuccess": "",
+          "onFail": "",
+          "successesNeeded": 0,
+          "reward": "",
+          "time": ""
+        }
+      ]
+    },
+    {
+      "renown": "Known",
+      "jobs": [
+        {
+          "type": "",
+          "title": "",
+          "description": "",
+          "onSuccess": "",
+          "onFail": "",
+          "successesNeeded": 0,
+          "reward": "",
+          "time": ""
+        }
+      ]
+    }
+  ]
+}

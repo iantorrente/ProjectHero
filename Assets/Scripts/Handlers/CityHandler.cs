@@ -40,6 +40,8 @@ public class CityHandler : MonoBehaviour {
       SceneManager.LoadScene("Police Station", LoadSceneMode.Single);
     } else if (pressedButton == "Kofee Haus") {
       SceneManager.LoadScene("Kofee Haus", LoadSceneMode.Single);
+    } else if (pressedButton == "Nightclub") {
+      SceneManager.LoadScene("Nightclub", LoadSceneMode.Single);
     } else if (pressedButton == "Back Button") {
       SceneManager.LoadScene("The City", LoadSceneMode.Single);
     } else if (pressedButton == "Gym Back") {
@@ -95,12 +97,10 @@ public class CityHandler : MonoBehaviour {
     //Moonlight Jobs Actions
     if (pressedButton == "KofeeHausWork") {
       JobHandler.handleMoonlight(pressedButton);
-    } else if (pressedButton == "") {
+    } else if (pressedButton == "NightclubWork") {
       JobHandler.handleMoonlight(pressedButton);
-      //strength job
-    } else if (pressedButton == "") {
+    } else if (pressedButton == "GymWork") {
       JobHandler.handleMoonlight(pressedButton);
-      //fortitude job
     } else if (pressedButton == "") {
       JobHandler.handleMoonlight(pressedButton);
       //will job

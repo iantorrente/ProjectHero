@@ -15,5 +15,5 @@ public class ParentData : MonoBehaviour {
 
     void Awake () {
       parentData = this;
-	}
+  }
 }

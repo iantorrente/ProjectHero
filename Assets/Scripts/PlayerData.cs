@@ -25,13 +25,13 @@ public class PlayerData : MonoBehaviour {
   public int stamina { get; set; }
   //Make a new health field that tracks health as a string (healthy, fatigued, exhausted, etc.)
 
-	// Use this for initialization
-	void Awake () {
-		if (playerData == null) {
+  // Use this for initialization
+  void Awake () {
+    if (playerData == null) {
       DontDestroyOnLoad(gameObject);
       playerData = this;
     } else if (playerData != this) {
       Destroy(gameObject);
     }
-	}
+  }
 }

@@ -16,17 +16,13 @@ public class TrainingHandler : MonoBehaviour {
     if (stamina > 0) {
       if (action == "strength") {
         StatsHandler.increaseStat(action, handleTrainingLevel(activeScene));
-        Debug.Log("Strength" + PlayerData.playerData.playerPower.strength);
       } else if (action == "agility") {
         StatsHandler.increaseStat(action, handleTrainingLevel(activeScene));
-        Debug.Log("Agility" + PlayerData.playerData.playerPower.agility);
       } else if (action == "fortitude") {
         StatsHandler.increaseStat(action, handleTrainingLevel(activeScene));
-        Debug.Log("Fortitude" + PlayerData.playerData.playerPower.fortitude);
       } else if (action == "will") {
         //Will might just need to be handled differently than the physical ones
         StatsHandler.increaseStat(action, handleTrainingLevel(activeScene));
-        Debug.Log(PlayerData.playerData.playerPower.will);
       }
 
       if (!tooPoor) {
@@ -47,13 +43,13 @@ public class TrainingHandler : MonoBehaviour {
       value = 0.25m;
     } else if (scene == "Gym Cheap" && !(money - 15 < 0)) {
       value = 0.35m;
-      PlayerData.playerData.money -= 15m;
+      StatsHandler.decreaseMoney(15m);
     } else if (scene == "Gym Normal" && !(money - 45 < 0)) {
       value = 0.65m;
-      PlayerData.playerData.money -= 45m;
+      StatsHandler.decreaseMoney(45m);
     } else if (scene == "Gym Expensive" && !(money - 100 < 0)) {
       value = 1;
-      PlayerData.playerData.money -= 100m;
+      StatsHandler.decreaseMoney(100m);
     } else {
       tooPoor = true;
     }

@@ -50,14 +50,22 @@ public class JobHandler : MonoBehaviour {
 
     if (hasStamina) {
       if (job == "KofeeHausWork") {
-        PlayerData.playerData.money += Helpers.calculateSalary(minimumWage, aMod); //Multiply by agility modifier
+        StatsHandler.increaseMoney(Helpers.calculateSalary(minimumWage, aMod)); //Multiply by agility modifier
         StatsHandler.increasePopularity(5 * rMod);
-        StatsHandler.increaseStat("agility", (decimal)0.10);
-        Debug.Log("You made $" + String.Format("{0:0.00}", Helpers.calculateSalary(minimumWage, aMod)) + " today!");
-      } else if (job == "") {
-        
+        StatsHandler.increaseStat("agility", 0.10m);
+        Debug.Log("You made $" + String.Format("{0:0.00}", Helpers.calculateSalary(minimumWage, aMod)) + " working a shift at the Kofee Haus!");
+      } else if (job == "NightclubWork") {
+        StatsHandler.increaseMoney(Helpers.calculateSalary(minimumWage, sMod));
+        StatsHandler.increasePopularity(5 * rMod);
+        StatsHandler.increaseStat("strength", 0.10m);
+        Debug.Log("You made $" + String.Format("{0:0.00}", Helpers.calculateSalary(minimumWage, sMod)) + " working a shift at the Nightclub!");     
+      } else if (job == "GymWork") {
+        StatsHandler.increaseMoney(Helpers.calculateSalary(minimumWage, fMod));
+        StatsHandler.increasePopularity(5 * rMod);
+        StatsHandler.increaseStat("fortitude", 0.10m);
+        Debug.Log("You made $" + String.Format("{0:0.00}", Helpers.calculateSalary(minimumWage, fMod)) + " working a shift at the Gym!"); 
       }
-      
+    
       TimeHandler.handleCycleChange("job");
     } else {
       Debug.Log("You're much too tired to be working right now");

@@ -47,4 +47,12 @@ public class StatsHandler : MonoBehaviour {
     PlayerData.playerData.popularityExperience -= popularity;
     PopularityHandler.handlePopularity();
   }
+
+  public static void increaseMoney (decimal money) {
+    PlayerData.playerData.money += money;
+  }
+
+  public static void decreaseMoney (decimal money) {
+    PlayerData.playerData.money -= money;
+  }
 }

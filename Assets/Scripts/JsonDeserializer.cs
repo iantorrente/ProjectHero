@@ -23,12 +23,16 @@ public class JsonDeserializer : MonoBehaviour {
   
   //Deserializes the JSON file in the path 'fatherNamePath'. Can be used to deserialize all data, not just the father one
   //Possibly find a way to make it generic so you can use it to deserialize any JSON
-  public static void deserializeJson () { 
+  public static void deserializeJson () {
   //With Resources.Load<>() you only need the filepath from within /Resources
+  string jobsJsonString = Resources.Load<TextAsset>("HeroJobs").ToString();
   string fJsonString = Resources.Load<TextAsset>("ParentNames").ToString(); 
   string nJsonString = Resources.Load<TextAsset>("Nicknames").ToString();
+  JobsCollection jobsCollection = JsonConvert.DeserializeObject<JobsCollection>(jobsJsonString);
   ParentNames parentNames = JsonConvert.DeserializeObject<ParentNames>(fJsonString);
   ParentNickname nNameCollection = JsonConvert.DeserializeObject<ParentNickname>(nJsonString);
+
+  Debug.Log(jobsCollection.heroJobs[0].jobs[0].title);
   
   //Put them into persistent data
   ParentData.parentData.fatherFirstNames = parentNames.fFirstNames;
