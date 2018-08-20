@@ -21,19 +21,33 @@ public class JobHandler : MonoBehaviour {
     of what's happening in the game world
   */
   public static void generateAgencyJobs () {
-    //Need to create a class for jobs so that I can store each job
-    //generated in here as an array of jobs
     int maxJobs = 5; //Number of displayed jobs
     int vCJobs = Mathf.RoundToInt(GlobalData.globalData.prevVictimsOfVC / 3);
     int pCJobs = Mathf.RoundToInt(GlobalData.globalData.prevVictimsOfPC / 10);
     int humanitarianJobs;
-    int heroJobs;
+    int heroJobs = 3;
     int corporateJobs;
     if (GlobalData.globalData.days == 0) {
       vCJobs = 2;
       pCJobs = 1;
     }
+    //Only do this if the job data for the day is null
+    getRandomHeroJobs(heroJobs);
     Debug.Log("# of violent crimes jobs: " + vCJobs + "\n# of property crimes jobs: " + pCJobs);
+  }
+
+  public static void getRandomHeroJobs (int amount) {
+    int rIndex = PlayerData.playerData.renownIndex; //Player's renown level
+    HeroJobs heroJobs = JobsData.jobsData.heroJobsCollection.heroJobs[rIndex]; //Gets possible jobs from data
+    Jobs[] jobArray = new Jobs[amount]; //To store jobs
+    int[] randomNumbers = Helpers.getRandomNumbers(amount, 0, heroJobs.jobs.Length);
+    for (int i = 0; i < amount; i++) {
+      jobArray[i] = heroJobs.jobs[randomNumbers[i]];
+      Debug.Log(heroJobs.jobs[randomNumbers[i]].title);
+    }
+
+    ParsedJob[] parsedJobs = Helpers.parseHeroJobs(jobArray, jobArray.Length);
+    AvailableJobs.availableJobs.heroJobsArray = parsedJobs;
   }
 
   //Moonlighting gives minimal money compared to hero jobs but they do

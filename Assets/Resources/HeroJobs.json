@@ -10,17 +10,97 @@
           "onSuccess": "",
           "onFail": "",
           "successesNeeded": 4,
-          "reward": "$10-$20, r15-r25",
+          "reward": "$10 - $20, r15 - r25",
           "time": "Morning, Monday to Friday, 1 week"
         },
         {
           "type": "contract",
-          "title": "",
+          "title": "Glorified Babysitter",
+          "description": "A superhero couple has asked you to 'tutor' their child while they go on a 'stakeout'. Normally so many air quotes would have you questioning the request, but money's money.",
+          "onSuccess": "",
+          "onFail": "",
+          "successesNeeded": 1,
+          "reward": "$10 - $20, r15 - r25",
+          "time": ""
+        },
+        {
+          "type": "contract",
+          "title": "Invisible War",
           "description": "",
           "onSuccess": "",
           "onFail": "",
           "successesNeeded": 1,
-          "reward": "",
+          "reward": "$10 - $20, r15 - r25",
+          "time": ""
+        },
+        {
+          "type": "contract",
+          "title": "March of the Insects",
+          "description": "",
+          "onSuccess": "",
+          "onFail": "",
+          "successesNeeded": 1,
+          "reward": "$10 - $20, r15 - r25",
+          "time": ""
+        },
+        {
+          "type": "contract",
+          "title": "Cat on a Tree",
+          "description": "",
+          "onSuccess": "",
+          "onFail": "",
+          "successesNeeded": 1,
+          "reward": "$10 - $20, r15 - r25",
+          "time": ""
+        },
+        {
+          "type": "contract",
+          "title": "Kite on a Tree",
+          "description": "",
+          "onSuccess": "",
+          "onFail": "",
+          "successesNeeded": 1,
+          "reward": "$10 - $20, r15 - r25",
+          "time": ""
+        },
+        {
+          "type": "contract",
+          "title": "Baby on a Tree",
+          "description": "",
+          "onSuccess": "",
+          "onFail": "",
+          "successesNeeded": 1,
+          "reward": "$10 - $20, r15 - r25",
+          "time": ""
+        },
+        {
+          "type": "contract",
+          "title": "Cleanup After Superhero",
+          "description": "",
+          "onSuccess": "",
+          "onFail": "",
+          "successesNeeded": 1,
+          "reward": "$10 - $20, r15 - r25",
+          "time": ""
+        },
+        {
+          "type": "contract",
+          "title": "Groceries are Heavy",
+          "description": "",
+          "onSuccess": "",
+          "onFail": "",
+          "successesNeeded": 1,
+          "reward": "$10 - $20, r15 - r25",
+          "time": ""
+        },
+        {
+          "type": "contract",
+          "title": "Missing Son",
+          "description": "",
+          "onSuccess": "",
+          "onFail": "",
+          "successesNeeded": 1,
+          "reward": "$10 - $20, r15 - r25",
           "time": ""
         }
       ]

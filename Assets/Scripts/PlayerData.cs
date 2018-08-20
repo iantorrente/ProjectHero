@@ -20,6 +20,7 @@ public class PlayerData : MonoBehaviour {
   public decimal willModifier { get; set; }
   public decimal fortitudeModifier { get; set; }
   public int fans { get; set; }
+  public int renownIndex { get; set; }
   public int healthinessIndex { get; set; }
   public int baseStamina { get; set; }
   public int stamina { get; set; }
