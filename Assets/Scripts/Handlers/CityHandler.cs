@@ -117,8 +117,12 @@ public class CityHandler : MonoBehaviour {
     } else if (pressedButton == "4") {
       SceneManager.LoadScene("Agency Display Job", LoadSceneMode.Single);
       GlobalData.globalData.pressedButton = pressedButton;
-    } else if (pressedButton == "Decline") {
+    } else if (pressedButton == "Decline Job") {
       SceneManager.LoadScene("Agency Jobs", LoadSceneMode.Single);
+    } else if (pressedButton == "Accept Job") {
+      PlayerData.playerData.takenJobs.Add(PlayerData.playerData.consideredJob);
+      AvailableJobs.availableJobs.heroJobsArray.RemoveAt(AvailableJobs.availableJobs.heroJobsArray.IndexOf(PlayerData.playerData.consideredJob));
+      SceneManager.LoadScene("The City", LoadSceneMode.Single);
     }
 
     //Moonlight Jobs Actions

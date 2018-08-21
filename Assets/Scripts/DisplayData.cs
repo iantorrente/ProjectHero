@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -27,6 +28,11 @@ public class DisplayData : MonoBehaviour {
 
   private void displayPlayerStats () {
     ChildPower playerPower = PlayerData.playerData.playerPower;
+    List<ParsedJob> jobs = PlayerData.playerData.takenJobs;
+    string jobsString = "";
+    for (int i = 0; i < jobs.Count; i++) {
+      jobsString += i+1 + ") " + jobs[i].title + " ";
+    }
 		GameObject.Find("Player Data Text").GetComponent<Text>().text = (
       playerPower.powerName + "\nSTATS:"
       + "\nStrength: " + (int)playerPower.strength
@@ -36,6 +42,7 @@ public class DisplayData : MonoBehaviour {
       + "\nTime: " + GlobalData.globalData.years + " years, " + GlobalData.globalData.months + " months, " + GlobalData.globalData.days + " days"
       + "\nMoney: $" + String.Format("{0:0.00}", PlayerData.playerData.money)
       + "\nPopularity: " + PlayerData.playerData.popularityTitle
+      + "\n\nTaken Jobs: " + jobsString
     );
   }
 
@@ -75,6 +82,7 @@ public class DisplayData : MonoBehaviour {
 
   private static void getJob (int index) {
     ParsedJob job = AvailableJobs.availableJobs.heroJobsArray[index];
+    PlayerData.playerData.consideredJob = job;
     GameObject.Find("Job Title").GetComponent<Text>().text = (
         job.title
       );

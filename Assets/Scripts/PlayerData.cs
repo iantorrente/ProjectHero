@@ -9,6 +9,7 @@ public class PlayerData : MonoBehaviour {
   public ParentalPower fatherPower { get; set; }
   public ParentalPower motherPower { get; set; }
   public List<ParsedJob> takenJobs = new List<ParsedJob>();
+  public ParsedJob consideredJob { get; set; }
   public bool reachedMaxJobs { get; set; }
   public string playerName { get; set; }
   public string popularityTitle { get; set; }
