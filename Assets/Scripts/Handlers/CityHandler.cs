@@ -102,6 +102,23 @@ public class CityHandler : MonoBehaviour {
       } else {
         Debug.Log("Look for jobs first");
       }
+    } else if (pressedButton == "0") {
+      SceneManager.LoadScene("Agency Display Job", LoadSceneMode.Single);
+      GlobalData.globalData.pressedButton = pressedButton;
+    } else if (pressedButton == "1") {
+      SceneManager.LoadScene("Agency Display Job", LoadSceneMode.Single);
+      GlobalData.globalData.pressedButton = pressedButton;
+    } else if (pressedButton == "2") {
+      SceneManager.LoadScene("Agency Display Job", LoadSceneMode.Single);
+      GlobalData.globalData.pressedButton = pressedButton;
+    } else if (pressedButton == "3") {
+      SceneManager.LoadScene("Agency Display Job", LoadSceneMode.Single);
+      GlobalData.globalData.pressedButton = pressedButton;
+    } else if (pressedButton == "4") {
+      SceneManager.LoadScene("Agency Display Job", LoadSceneMode.Single);
+      GlobalData.globalData.pressedButton = pressedButton;
+    } else if (pressedButton == "Decline") {
+      SceneManager.LoadScene("Agency Jobs", LoadSceneMode.Single);
     }
 
     //Moonlight Jobs Actions

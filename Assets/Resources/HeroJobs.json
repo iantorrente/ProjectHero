@@ -26,7 +26,7 @@
         {
           "type": "contract",
           "title": "Invisible War",
-          "description": "",
+          "description": "Somewhere out there are villains afoot. Small villains, large villains, they're all hiding and waiting to enact their dastardly deeds. While we have no proof of it, go out and scour the lands for them!",
           "onSuccess": "",
           "onFail": "",
           "successesNeeded": 1,
@@ -36,7 +36,7 @@
         {
           "type": "contract",
           "title": "March of the Insects",
-          "description": "",
+          "description": "A local picnic has been tormented by a plague of terrestrial insectoids. Dispatch to the scene of conflict and put a stop to the invasion!",
           "onSuccess": "",
           "onFail": "",
           "successesNeeded": 1,
@@ -46,7 +46,7 @@
         {
           "type": "contract",
           "title": "Cat on a Tree",
-          "description": "",
+          "description": "Someone's gotten their sweet ol' cat stuck up on a tree. It might be slightly stereotypical, but at least it's work, right?",
           "onSuccess": "",
           "onFail": "",
           "successesNeeded": 1,
@@ -56,7 +56,7 @@
         {
           "type": "contract",
           "title": "Kite on a Tree",
-          "description": "",
+          "description": "Someone's gotten their sweet ol' kite stuck up on a tree. It might be slightly stereotypical, but at least it's work, right?",
           "onSuccess": "",
           "onFail": "",
           "successesNeeded": 1,
@@ -66,7 +66,7 @@
         {
           "type": "contract",
           "title": "Baby on a Tree",
-          "description": "",
+          "description": "How this happened I don't know, but someone's gotta do something about it. You're a hero so why don't you go and do this one?",
           "onSuccess": "",
           "onFail": "",
           "successesNeeded": 1,
@@ -76,7 +76,7 @@
         {
           "type": "contract",
           "title": "Cleanup After Superhero",
-          "description": "",
+          "description": "We don't know exactly what happened, but before we knew it some hero just ran through and stormed the place. As a sign of goodwill, we're sending some of the Agencies heroes to help clean up. That means you.",
           "onSuccess": "",
           "onFail": "",
           "successesNeeded": 1,
@@ -86,7 +86,7 @@
         {
           "type": "contract",
           "title": "Groceries are Heavy",
-          "description": "",
+          "description": "An old lady trying to cross the street has been stuck there for the greater part of the day now. She's really wanting to get home and bake some old people goods, so help her across the street, alright?",
           "onSuccess": "",
           "onFail": "",
           "successesNeeded": 1,
@@ -96,7 +96,7 @@
         {
           "type": "contract",
           "title": "Missing Son",
-          "description": "",
+          "description": "A father has just called in that his son has been missing for the past few days. The police have dropped the case because the trail has gone cold. That's where we come in.",
           "onSuccess": "",
           "onFail": "",
           "successesNeeded": 1,

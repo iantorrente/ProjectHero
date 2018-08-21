@@ -14,9 +14,9 @@ public class JobHandler : MonoBehaviour {
   */
   public static void generateAgencyJobs () {
     GlobalData.globalData.jobsGenerated = true;
-    int maxJobs = 5; //Number of displayed jobs
+    int maxJobs = 8; //Number of displayed jobs
     //It's possible for jobs for a day to be zero. Do we want this?
-    int heroJobs = UnityEngine.Random.Range(0, maxJobs);
+    int heroJobs = UnityEngine.Random.Range(2, maxJobs);
     int humanJobs = UnityEngine.Random.Range(0, (maxJobs - heroJobs));
     int corpJobs = UnityEngine.Random.Range(0, (maxJobs - (heroJobs + humanJobs)));
 

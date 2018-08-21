@@ -5,6 +5,7 @@ public class ParsedJob {
   public string onSuccess { get; set; }
   public string onFail { get; set; }
   public int successesNeeded { get; set; }
+  public int successes { get; set; }
   public int moneyReward { get; set; }
   public int renownReward { get; set; }
   public string timeOfDay { get; set; }

@@ -8,6 +8,8 @@ public class PlayerData : MonoBehaviour {
   public ChildPower playerPower { get; set; }
   public ParentalPower fatherPower { get; set; }
   public ParentalPower motherPower { get; set; }
+  public List<ParsedJob> takenJobs = new List<ParsedJob>();
+  public bool reachedMaxJobs { get; set; }
   public string playerName { get; set; }
   public string popularityTitle { get; set; }
   public string healthiness { get; set; }
@@ -19,6 +21,8 @@ public class PlayerData : MonoBehaviour {
   public decimal agilityModifier { get; set; }
   public decimal willModifier { get; set; }
   public decimal fortitudeModifier { get; set; }
+  public int maxJobsPerWeek { get; set; }
+  public int jobsTaken { get; set; }
   public int fans { get; set; }
   public int renownIndex { get; set; }
   public int healthinessIndex { get; set; }

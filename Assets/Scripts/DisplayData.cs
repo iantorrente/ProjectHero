@@ -13,6 +13,8 @@ public class DisplayData : MonoBehaviour {
       displayGlobalStats();
     } else if (activeScene == "Agency Jobs") {
       displayAgencyJobs();
+    } else if (activeScene == "Agency Display Job") {
+      displayJobInfo();
     } else {
       displayInformation();
     }
@@ -64,6 +66,24 @@ public class DisplayData : MonoBehaviour {
         AvailableJobs.availableJobs.heroJobsArray[i].title
       );
     }
+  }
+
+  public static void displayJobInfo () {
+    string pressedButton = GlobalData.globalData.pressedButton;
+    getJob(Int32.Parse(pressedButton));
+  }
+
+  private static void getJob (int index) {
+    ParsedJob job = AvailableJobs.availableJobs.heroJobsArray[index];
+    GameObject.Find("Job Title").GetComponent<Text>().text = (
+        job.title
+      );
+    GameObject.Find("Job Description").GetComponent<Text>().text = (
+      job.description
+      + "\n\nJob Type: " + job.type
+      + "\nRewards: $" + job.moneyReward + " and " + job.renownReward + " renown"
+      +"\nThe job will be every " + job.timeOfDay + ", " + job.activeDays + " for " + job.lengthOfWork
+    );
   }
 
 	// Use this for initialization

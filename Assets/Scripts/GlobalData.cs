@@ -32,6 +32,7 @@ public class GlobalData : MonoBehaviour {
   public float dailyVCRate { get; set; }
   public float dailyPCRate { get; set; }
   public decimal minimumWage { get; set; }
+  public string pressedButton { get; set; }
   public string dayCycle { get; set; }
   public string weekDayName { get; set; }
   public string monthName { get; set; }
