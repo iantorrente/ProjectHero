@@ -11,6 +11,8 @@ public class DisplayData : MonoBehaviour {
       displayPlayerStats();
     } else if (activeScene == "City Hall") {
       displayGlobalStats();
+    } else if (activeScene == "Agency Jobs") {
+      displayAgencyJobs();
     } else {
       displayInformation();
     }
@@ -53,6 +55,15 @@ public class DisplayData : MonoBehaviour {
       + "\nVictims of Property Crimes: " + GlobalData.globalData.victimsOfPC
 
     );
+  }
+
+  private void displayAgencyJobs () {
+    Debug.Log(AvailableJobs.availableJobs.heroJobsArray.Count);
+    for (int i = 0; i < AvailableJobs.availableJobs.heroJobsArray.Count; i++) {
+      GameObject.Find(i.ToString()).GetComponentsInChildren<Text>()[0].text = (
+        AvailableJobs.availableJobs.heroJobsArray[i].title
+      );
+    }
   }
 
 	// Use this for initialization

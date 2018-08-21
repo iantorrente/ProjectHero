@@ -8,6 +8,7 @@ using UnityEngine;
 public class GlobalData : MonoBehaviour {
   public static GlobalData globalData { get; set; }
   public bool serialKillerActive { get; set; }
+  public bool jobsGenerated { get; set; }
   public int years { get; set; }
   public int months;
   public int weekDay { get; set; }

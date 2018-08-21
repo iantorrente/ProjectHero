@@ -1,39 +1,33 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class JobHandler : MonoBehaviour {
+  
   /*
     Create jobs based on crimes (victims of violent crimes/2
-    and victims of proprety crimes/10)
-
-    Should also have jobs based on private/domestic/corporate
-    needs, as well as internal hero jobs, like (fight villain, 
-    do hero job x, or fight against global disasters)
-
-    Will most likely take generic jobs from a JSON file and then
-    interpret the fields to be created as jobs
-  */
-
-  /*
+    and victims of proprety crimes/10).
     Probably generate jobs each day so that jobs can be reflective
     of what's happening in the game world
   */
   public static void generateAgencyJobs () {
+    GlobalData.globalData.jobsGenerated = true;
     int maxJobs = 5; //Number of displayed jobs
-    int vCJobs = Mathf.RoundToInt(GlobalData.globalData.prevVictimsOfVC / 3);
-    int pCJobs = Mathf.RoundToInt(GlobalData.globalData.prevVictimsOfPC / 10);
-    int humanitarianJobs;
-    int heroJobs = 3;
-    int corporateJobs;
-    if (GlobalData.globalData.days == 0) {
-      vCJobs = 2;
-      pCJobs = 1;
-    }
+    //It's possible for jobs for a day to be zero. Do we want this?
+    int heroJobs = UnityEngine.Random.Range(0, maxJobs);
+    int humanJobs = UnityEngine.Random.Range(0, (maxJobs - heroJobs));
+    int corpJobs = UnityEngine.Random.Range(0, (maxJobs - (heroJobs + humanJobs)));
+
     //Only do this if the job data for the day is null
     getRandomHeroJobs(heroJobs);
-    Debug.Log("# of violent crimes jobs: " + vCJobs + "\n# of property crimes jobs: " + pCJobs);
+    getRandomCorpJobs(corpJobs);
+    getRandomHumanJobs(humanJobs);
+
+    for (int i = 0; i < AvailableJobs.availableJobs.heroJobsArray.Count; i++) {
+      Debug.Log(AvailableJobs.availableJobs.heroJobsArray[i].title);
+    }
   }
 
   public static void getRandomHeroJobs (int amount) {
@@ -43,11 +37,35 @@ public class JobHandler : MonoBehaviour {
     int[] randomNumbers = Helpers.getRandomNumbers(amount, 0, heroJobs.jobs.Length);
     for (int i = 0; i < amount; i++) {
       jobArray[i] = heroJobs.jobs[randomNumbers[i]];
-      Debug.Log(heroJobs.jobs[randomNumbers[i]].title);
     }
+    addJobs(jobArray);
+  }
 
-    ParsedJob[] parsedJobs = Helpers.parseHeroJobs(jobArray, jobArray.Length);
-    AvailableJobs.availableJobs.heroJobsArray = parsedJobs;
+  public static void getRandomCorpJobs (int amount) {
+    Jobs[] corpJobs = JobsData.jobsData.corpJobsCollection.jobs;
+    Jobs[] jobArray = new Jobs[amount];
+    int[] randomNumbers = Helpers.getRandomNumbers(amount, 0, corpJobs.Length);
+    for (int i = 0; i < amount; i++) {
+      jobArray[i] = corpJobs[randomNumbers[i]];
+    }
+    addJobs(jobArray);    
+  }
+
+  public static void getRandomHumanJobs (int amount) {
+    Jobs[] humanJobs = JobsData.jobsData.humanJobsCollection.jobs;
+    Jobs[] jobArray = new Jobs[amount];
+    int[] randomNumbers = Helpers.getRandomNumbers(amount, 0, humanJobs.Length);
+    for (int i = 0; i < amount; i++) {
+      jobArray[i] = humanJobs[randomNumbers[i]];
+    }
+    addJobs(jobArray);    
+  }
+
+  private static void addJobs (Jobs[] job) {
+    ParsedJob[] parsedJobs = parseHeroJobs(job, job.Length);
+    for (int i = 0; i < parsedJobs.Length; i++) {
+      AvailableJobs.availableJobs.heroJobsArray.Add(parsedJobs[i]);
+    }
   }
 
   //Moonlighting gives minimal money compared to hero jobs but they do
@@ -84,6 +102,60 @@ public class JobHandler : MonoBehaviour {
     } else {
       Debug.Log("You're much too tired to be working right now");
     }
+  }
+
+  public static ParsedJob[] parseHeroJobs (Jobs[] jobs, int amount) {
+    ParsedJob[] parsedJobs = new ParsedJob[amount];
     
+    for (int i = 0; i < amount; i++) {
+      parsedJobs[i] = new ParsedJob();
+      parsedJobs[i].type = jobs[i].type;
+      parsedJobs[i].title = jobs[i].title;
+      parsedJobs[i].description = jobs[i].description;
+      parsedJobs[i].onSuccess = jobs[i].onSuccess;
+      parsedJobs[i].onFail = jobs[i].onFail;
+      parsedJobs[i].successesNeeded = jobs[i].successesNeeded;
+      parsedJobs[i].moneyReward = parseRewards("money", jobs[i].reward);
+      parsedJobs[i].renownReward = parseRewards("renown", jobs[i].reward);
+      parsedJobs[i].timeOfDay = parseTime("timeOfDay", jobs[i].time);
+      parsedJobs[i].activeDays = parseTime("activeDays", jobs[i].time);
+      parsedJobs[i].lengthOfWork = parseTime("lengthOfWork", jobs[i].time);
+    }
+
+    return parsedJobs;
+  }
+
+  //TODO: Turn this into a generic, dynamic parser so that whatever is put in it can parse
+  //without any issues, even if some fields are missing
+  public static int parseRewards (string type, string stringReward) {
+    int reward = 0;
+    Regex rx = new Regex(@"(0|[1-9][0-9]*)");
+    MatchCollection matches = rx.Matches(stringReward);
+    int[] rewardArray = new int[matches.Count];
+    for (int i = 0; i < matches.Count; i++) {
+      rewardArray[i] = Int32.Parse(matches[i].ToString());
+    }
+
+    if (type == "money") {
+      reward = UnityEngine.Random.Range(rewardArray[0], rewardArray[1]);
+    } else if (type == "renown") {
+      reward = UnityEngine.Random.Range(rewardArray[2], rewardArray[3]);
+    }
+
+    return reward;
+  }
+
+  public static string parseTime (string type, string stringTime) {
+    string time = "";
+    string[] timeArray = stringTime.Split(',');
+
+    if (type == "timeOfDay") {
+      time = timeArray[0];
+    } else if (type == "activeDays") {
+      time = timeArray[1];
+    } else if (type == "lengthOfWork") {
+      time = timeArray[2];
+    }
+    return time;
   }
 }

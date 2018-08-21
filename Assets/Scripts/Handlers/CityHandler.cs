@@ -90,8 +90,18 @@ public class CityHandler : MonoBehaviour {
 
     //Agency Actions
     if (pressedButton == "Find Job") {
-      JobHandler.generateAgencyJobs();
-      //Debug.Log("Sorry hero, there isn't anything yet.");
+      if (GlobalData.globalData.jobsGenerated == false) {
+        JobHandler.generateAgencyJobs();
+        SceneManager.LoadScene("Agency Jobs", LoadSceneMode.Single);
+      } else {
+        Debug.Log("Jobs have already been generated");
+      }
+    } else if (pressedButton == "Look At Jobs") {
+      if (GlobalData.globalData.jobsGenerated == true) {
+        SceneManager.LoadScene("Agency Jobs", LoadSceneMode.Single);
+      } else {
+        Debug.Log("Look for jobs first");
+      }
     }
 
     //Moonlight Jobs Actions

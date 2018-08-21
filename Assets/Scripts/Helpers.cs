@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class Helpers {
@@ -42,44 +41,9 @@ public class Helpers {
     return intArray;
   }
 
-  public static ParsedJob[] parseHeroJobs (Jobs[] jobs, int amount) {
-    ParsedJob[] parsedJobs = new ParsedJob[amount];
-
-    for (int i = 0; i < amount; i++) {
-      parsedJobs[i] = new ParsedJob();
-    }
-
-    //WHEN YOU PARSE THE REWARDS JUST SEND IT BACK ALREADY RANDOMIZED
-    for (int i = 0; i < amount; i++) {
-      parsedJobs[i].type = jobs[i].type;
-      parsedJobs[i].title = jobs[i].title;
-      parsedJobs[i].description = jobs[i].description;
-      parsedJobs[i].onSuccess = jobs[i].onSuccess;
-      parsedJobs[i].onFail = jobs[i].onFail;
-      parsedJobs[i].successesNeeded = jobs[i].successesNeeded;
-      parsedJobs[i].moneyReward = parseRewards("money", jobs[i].reward);
-      parsedJobs[i].renownReward = parseRewards("renown", jobs[i].reward);
-    }
-
-    return parsedJobs;
-  }
-
-  public static int parseRewards (string type, string stringReward) {
-    int reward = 0;
-    Regex rx = new Regex(@"(0|[1-9][0-9]*)");
-    MatchCollection matches = rx.Matches(stringReward);
-    int[] rewardArray = new int[matches.Count];
-    for (int i = 0; i < matches.Count; i++) {
-      rewardArray[i] = Int32.Parse(matches[i].ToString());
-    }
-
-    if (type == "money") {
-      reward = UnityEngine.Random.Range(rewardArray[0], rewardArray[1]);
-    } else if (type == "renown") {
-      reward = UnityEngine.Random.Range(rewardArray[2], rewardArray[3]);
-    }
-
-    return reward;
+  public static void clearHeroJobsList () {
+    GlobalData.globalData.jobsGenerated = false;
+    AvailableJobs.availableJobs.heroJobsArray.Clear();
   }
 
   // public static ParsedCorpJob[] parseCorporateJobs (CorporateJobs[] corpJobs, int amount) {

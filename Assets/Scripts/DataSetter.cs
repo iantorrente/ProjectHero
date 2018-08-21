@@ -9,6 +9,7 @@ public class DataSetter : MonoBehaviour {
     //All these numbers are placeholders. They'll be tweaked
     //based on gameplay balances
     GlobalData.globalData.serialKillerActive = false;
+    GlobalData.globalData.jobsGenerated = false;
     GlobalData.globalData.generalPopulation = Random.Range(450000, 500000);
     GlobalData.globalData.heroPopulation = Random.Range(99, 110);
     GlobalData.globalData.villainPopulation = Random.Range(100, 120);

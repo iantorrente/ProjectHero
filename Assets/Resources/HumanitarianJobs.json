@@ -2,7 +2,7 @@
   "jobs": [
     {
       "type": "contract",
-      "title": "Corporate Espionage",
+      "title": "Save the Honey Bees!",
       "description": "",
       "onSuccess": "",
       "onFail": "",
@@ -12,7 +12,7 @@
     },
     {
       "type": "contract",
-      "title": "The Proof is in the Pudding",
+      "title": "Clean the Coral Reefs",
       "description": "",
       "onSuccess": "",
       "onFail": "",
@@ -22,7 +22,7 @@
     },
     {
       "type": "contract",
-      "title": "Dire Straits",
+      "title": "Fly Packages to Disaster Zone",
       "description": "",
       "onSuccess": "",
       "onFail": "",
@@ -32,7 +32,7 @@
     },
     {
       "type": "contract",
-      "title": "Copyright Claims",
+      "title": "Rescue Trapped Miners",
       "description": "",
       "onSuccess": "",
       "onFail": "",
@@ -42,7 +42,7 @@
     },
     {
       "type": "contract",
-      "title": "Wolf in Sheep's Clothing",
+      "title": "Volunteer at Red Cross",
       "description": "",
       "onSuccess": "",
       "onFail": "",
@@ -52,7 +52,7 @@
     },
     {
       "type": "contract",
-      "title": "Red Handed",
+      "title": "Disaster Relief",
       "description": "",
       "onSuccess": "",
       "onFail": "",
@@ -62,7 +62,7 @@
     },
     {
       "type": "contract",
-      "title": "Forever Innocent",
+      "title": "Keep Orphans Company",
       "description": "",
       "onSuccess": "",
       "onFail": "",
@@ -72,7 +72,7 @@
     },
     {
       "type": "contract",
-      "title": "If it Barks it Bleeds",
+      "title": "Visit Patients in the Hospital",
       "description": "",
       "onSuccess": "",
       "onFail": "",
@@ -82,7 +82,7 @@
     },
     {
       "type": "contract",
-      "title": "Containment Specialist",
+      "title": "Make A Wish Foundation",
       "description": "",
       "onSuccess": "",
       "onFail": "",

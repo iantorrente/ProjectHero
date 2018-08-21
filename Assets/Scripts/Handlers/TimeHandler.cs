@@ -17,6 +17,7 @@ public class TimeHandler : MonoBehaviour {
     } else if (action == "training") {
       EnergyHandler.handleEnergy(action);
     }
+    Helpers.clearHeroJobsList();
     GlobalData.globalData.days += 1;
     GlobalData.globalData.weekDay += 1;
     GlobalData.globalData.dayCycle = "Morning";
