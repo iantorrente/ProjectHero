@@ -145,6 +145,7 @@ public class JobHandler : MonoBehaviour {
     return reward;
   }
 
+  //Splits json time into 3 separate strings
   public static string parseTime (string type, string stringTime) {
     string time = "";
     string[] timeArray = stringTime.Split(',');
@@ -157,5 +158,21 @@ public class JobHandler : MonoBehaviour {
       time = timeArray[2];
     }
     return time;
+  }
+
+  //Returns a list of dates formatted dd/mm/yyyy
+  public static List<int> parseDate (ParsedJob job) {
+    List<int> dates = new List<int>();
+    string activeDays = job.activeDays;
+    string lengthOfWork = job.lengthOfWork;
+
+    //If activeDays has 'to' then get every date between the first string and the second string
+    Regex cycleRegex = new Regex(@"");
+
+    //If lengthOfWork has day, only schedule it for the day, if it's week, schedule it for however
+    //many weeks are involved, if it's month then schedule it for however many months
+    Regex lengthRegex = new Regex(@"");
+
+    return dates;
   }
 }

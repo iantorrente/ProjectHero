@@ -120,9 +120,15 @@ public class CityHandler : MonoBehaviour {
     } else if (pressedButton == "Decline Job") {
       SceneManager.LoadScene("Agency Jobs", LoadSceneMode.Single);
     } else if (pressedButton == "Accept Job") {
-      PlayerData.playerData.takenJobs.Add(PlayerData.playerData.consideredJob);
-      AvailableJobs.availableJobs.heroJobsArray.RemoveAt(AvailableJobs.availableJobs.heroJobsArray.IndexOf(PlayerData.playerData.consideredJob));
-      SceneManager.LoadScene("The City", LoadSceneMode.Single);
+      if (PlayerData.playerData.jobsTaken == PlayerData.playerData.maxJobs) {
+        Debug.Log("You've already got enough jobs for now, Hero");
+      } else {
+        PlayerData.playerData.takenJobs.Add(PlayerData.playerData.consideredJob);
+        PlayerData.playerData.jobsTaken += 1;
+        CalendarHandler.createJobCE(PlayerData.playerData.consideredJob);
+        AvailableJobs.availableJobs.heroJobsArray.RemoveAt(AvailableJobs.availableJobs.heroJobsArray.IndexOf(PlayerData.playerData.consideredJob));
+        SceneManager.LoadScene("The City", LoadSceneMode.Single);
+      }
     }
 
     //Moonlight Jobs Actions

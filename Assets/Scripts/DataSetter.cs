@@ -30,6 +30,7 @@ public class DataSetter : MonoBehaviour {
     GlobalData.globalData.monthName = "January";
     GlobalData.globalData.seasonName = "Spring";
     GlobalData.globalData.weatherName = "Sunny";
+    GlobalData.globalData.years = 2091;
     
     //Don't need to store this in persistent data
     GlobalData.globalData.weekDayNameArray = new string[] {
@@ -46,6 +47,7 @@ public class DataSetter : MonoBehaviour {
     PlayerData.playerData.playerPower = Main.childPower;
     PlayerData.playerData.fatherPower = Main.fatherPower;
     PlayerData.playerData.motherPower = Main.motherPower;
+    PlayerData.playerData.maxJobs = 1;
     PlayerData.playerData.fans = 0;
     PlayerData.playerData.money = 500;
     PlayerData.playerData.popularityTitle = "Nameless";

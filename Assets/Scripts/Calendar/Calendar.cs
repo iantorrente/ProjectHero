@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Calendar : MonoBehaviour {
-  public static void addEvent (string title, int date) {
-    
-  }
+  public static Calendar calendar;
+  public List<CalendarEvent> calendarEvents = new List<CalendarEvent>();
+  public int year { get; set; }
+  public int month { get; set; }
+  public int day { get; set; }
+  public string monthName { get; set; }
 
-  public static void deleteEvent () {
-
+  private void Awake() {
+    calendar = this;
   }
 }

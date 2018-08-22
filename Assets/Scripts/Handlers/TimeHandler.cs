@@ -38,7 +38,6 @@ public class TimeHandler : MonoBehaviour {
 
   public static void handleWeek () {
     int weekDay = GlobalData.globalData.weekDay;
-    PlayerData.playerData.jobsTaken = 0;
     GlobalData.globalData.weekDayName = GlobalData.globalData.weekDayNameArray[weekDay];
   }
 

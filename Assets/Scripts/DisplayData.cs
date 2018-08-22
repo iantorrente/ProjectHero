@@ -67,7 +67,7 @@ public class DisplayData : MonoBehaviour {
   }
 
   private void displayAgencyJobs () {
-    Debug.Log(AvailableJobs.availableJobs.heroJobsArray.Count);
+    //TODO: dynamically display buttons only when they're needed
     for (int i = 0; i < AvailableJobs.availableJobs.heroJobsArray.Count; i++) {
       GameObject.Find(i.ToString()).GetComponentsInChildren<Text>()[0].text = (
         AvailableJobs.availableJobs.heroJobsArray[i].title
