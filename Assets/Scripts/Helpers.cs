@@ -46,6 +46,15 @@ public class Helpers {
     AvailableJobs.availableJobs.heroJobsArray.Clear();
   }
 
+  public static bool isMoneyPositive (decimal amount) {
+    decimal playerMoney = PlayerData.playerData.money;
+    if (playerMoney - amount > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   // public static ParsedCorpJob[] parseCorporateJobs (CorporateJobs[] corpJobs, int amount) {
   //   ParsedCorpJob[] parsedCorpJobs = new ParsedCorpJob[amount];
 

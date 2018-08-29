@@ -24,30 +24,36 @@ public class JsonDeserializer : MonoBehaviour {
   //Deserializes the JSON file in the path 'fatherNamePath'. Can be used to deserialize all data, not just the father one
   //Possibly find a way to make it generic so you can use it to deserialize any JSON
   public static void deserializeJson () {
-  //With Resources.Load<>() you only need the filepath from within /Resources
-  string heroJobsJS = Resources.Load<TextAsset>("HeroJobs").ToString();
-  string corpJobsJS = Resources.Load<TextAsset>("CorporateJobs").ToString();
-  string humanJobsJS = Resources.Load<TextAsset>("HumanitarianJobs").ToString();
-  string fJsonString = Resources.Load<TextAsset>("ParentNames").ToString(); 
-  string nJsonString = Resources.Load<TextAsset>("Nicknames").ToString();
+    //With Resources.Load<>() you only need the filepath from within /Resources
+    string heroJobsJS = Resources.Load<TextAsset>("HeroJobs").ToString();
+    string corpJobsJS = Resources.Load<TextAsset>("CorporateJobs").ToString();
+    string humanJobsJS = Resources.Load<TextAsset>("HumanitarianJobs").ToString();
+    string fJsonString = Resources.Load<TextAsset>("ParentNames").ToString(); 
+    string nJsonString = Resources.Load<TextAsset>("Nicknames").ToString();
+    string calendarEventsJS = Resources.Load<TextAsset>("Events").ToString();
 
-  HeroJobsCollection heroJobsCollection = JsonConvert.DeserializeObject<HeroJobsCollection>(heroJobsJS);
-  CorporateJobsCollection corpJobsCollection = JsonConvert.DeserializeObject<CorporateJobsCollection>(corpJobsJS);
-  HumanitarianJobsCollection humanJobsCollection = JsonConvert.DeserializeObject<HumanitarianJobsCollection>(humanJobsJS);
-  ParentNames parentNames = JsonConvert.DeserializeObject<ParentNames>(fJsonString);
-  ParentNickname nNameCollection = JsonConvert.DeserializeObject<ParentNickname>(nJsonString);
-  
-  //Put them into persistent data
-  JobsData.jobsData.heroJobsCollection = heroJobsCollection;
-  JobsData.jobsData.corpJobsCollection = corpJobsCollection;
-  JobsData.jobsData.humanJobsCollection = humanJobsCollection;
-  ParentData.parentData.fatherFirstNames = parentNames.fFirstNames;
-  ParentData.parentData.fatherLastNames = parentNames.lastNames;
-  ParentData.parentData.motherFirstNames = parentNames.mFirstNames;
-  ParentData.parentData.strengthNicknames = nNameCollection.nicknames[0].nicknames;
-  ParentData.parentData.agilityNicknames = nNameCollection.nicknames[1].nicknames;
-  ParentData.parentData.willNicknames = nNameCollection.nicknames[2].nicknames;
-  ParentData.parentData.fortitudeNicknames = nNameCollection.nicknames[3].nicknames;
+    CalendarEventCollection cECollection = JsonConvert.DeserializeObject<CalendarEventCollection>(calendarEventsJS);
+    HeroJobsCollection heroJobsCollection = JsonConvert.DeserializeObject<HeroJobsCollection>(heroJobsJS);
+    CorporateJobsCollection corpJobsCollection = JsonConvert.DeserializeObject<CorporateJobsCollection>(corpJobsJS);
+    HumanitarianJobsCollection humanJobsCollection = JsonConvert.DeserializeObject<HumanitarianJobsCollection>(humanJobsJS);
+    ParentNames parentNames = JsonConvert.DeserializeObject<ParentNames>(fJsonString);
+    ParentNickname nNameCollection = JsonConvert.DeserializeObject<ParentNickname>(nJsonString);
+    
+    //Put them into persistent data
+    JobsData.jobsData.heroJobsCollection = heroJobsCollection;
+    JobsData.jobsData.corpJobsCollection = corpJobsCollection;
+    JobsData.jobsData.humanJobsCollection = humanJobsCollection;
+    ParentData.parentData.fatherFirstNames = parentNames.fFirstNames;
+    ParentData.parentData.fatherLastNames = parentNames.lastNames;
+    ParentData.parentData.motherFirstNames = parentNames.mFirstNames;
+    ParentData.parentData.strengthNicknames = nNameCollection.nicknames[0].nicknames;
+    ParentData.parentData.agilityNicknames = nNameCollection.nicknames[1].nicknames;
+    ParentData.parentData.willNicknames = nNameCollection.nicknames[2].nicknames;
+    ParentData.parentData.fortitudeNicknames = nNameCollection.nicknames[3].nicknames;
+    
+    for (int i = 0; i < cECollection.events.Length; i++) {
+      Calendar.calendarEvents.Add(cECollection.events[i]);
+    }
   }
 
   //Create a method to generically deserialize any json file

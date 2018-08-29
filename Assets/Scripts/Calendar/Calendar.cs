@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Calendar : MonoBehaviour {
   public static Calendar calendar;
-  public List<CalendarEvent> calendarEvents = new List<CalendarEvent>();
+  public static List<CalendarEvent> calendarEvents = new List<CalendarEvent>();
   public int year { get; set; }
   public int month { get; set; }
   public int day { get; set; }

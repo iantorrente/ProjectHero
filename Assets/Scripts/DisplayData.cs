@@ -39,7 +39,7 @@ public class DisplayData : MonoBehaviour {
       + "\nAgility: " + (int)playerPower.agility
       + "\nWill: " + (int)playerPower.will
       + "\nFortitude: " + (int)playerPower.fortitude
-      + "\nTime: " + GlobalData.globalData.years + " years, " + GlobalData.globalData.months + " months, " + GlobalData.globalData.days + " days"
+      + "\nDate: " + GlobalData.globalData.date
       + "\nMoney: $" + String.Format("{0:0.00}", PlayerData.playerData.money)
       + "\nPopularity: " + PlayerData.playerData.popularityTitle
       + "\n\nTaken Jobs: " + jobsString

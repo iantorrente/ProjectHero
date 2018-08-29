@@ -31,6 +31,9 @@ public class TimeHandler : MonoBehaviour {
       handleMonthChange();
     }
     SimulationHandler.handleSimulation();
+    GlobalData.globalData.date = GlobalData.globalData.months.ToString() + "/" + GlobalData.globalData.days.ToString() + "/" + GlobalData.globalData.years.ToString();
+    Debug.Log(GlobalData.globalData.date);
+
     //Generate jobs after running the simulation so that
     //jobs can react to global dynamic events
     SceneManager.LoadScene("The City", LoadSceneMode.Single);
@@ -43,13 +46,13 @@ public class TimeHandler : MonoBehaviour {
 
   public static void handleMonthChange () {
     GlobalData.globalData.months += 1;
-    GlobalData.globalData.days = 0;
+    GlobalData.globalData.days = 1;
 
-    if (GlobalData.globalData.months == 12) {
-      GlobalData.globalData.months = 0;
+    if (GlobalData.globalData.months == 13) {
+      GlobalData.globalData.months = 1;
       handleYearChange();
     }
-    GlobalData.globalData.monthName = GlobalData.globalData.monthNameArray[GlobalData.globalData.months];
+    GlobalData.globalData.monthName = GlobalData.globalData.monthNameArray[GlobalData.globalData.months - 1];
     handleSeasonChange();
     Debug.Log(GlobalData.globalData.monthName);
     Debug.Log(GlobalData.globalData.seasonName);

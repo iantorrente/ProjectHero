@@ -30,7 +30,10 @@ public class DataSetter : MonoBehaviour {
     GlobalData.globalData.monthName = "January";
     GlobalData.globalData.seasonName = "Spring";
     GlobalData.globalData.weatherName = "Sunny";
+    GlobalData.globalData.days = 1;
+    GlobalData.globalData.months = 1;
     GlobalData.globalData.years = 2091;
+    GlobalData.globalData.date = "1/1/2091";
     
     //Don't need to store this in persistent data
     GlobalData.globalData.weekDayNameArray = new string[] {

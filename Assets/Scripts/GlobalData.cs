@@ -38,6 +38,7 @@ public class GlobalData : MonoBehaviour {
   public string monthName { get; set; }
   public string seasonName { get; set; }
   public string weatherName { get; set; }
+  public string date { get; set; }
   public string[] calendarEvents { get; set; }
   public string[] weekDayNameArray { get; set; }
   public string[] monthNameArray { get; set; }

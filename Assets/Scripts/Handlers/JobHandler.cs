@@ -161,17 +161,32 @@ public class JobHandler : MonoBehaviour {
   }
 
   //Returns a list of dates formatted dd/mm/yyyy
-  public static List<int> parseDate (ParsedJob job) {
-    List<int> dates = new List<int>();
+  public static List<string> parseDate (ParsedJob job) {
+    List<string> dates = new List<string>();
+    string day = GlobalData.globalData.days.ToString();
+    string month = (GlobalData.globalData.months + 1).ToString();
+    string year = GlobalData.globalData.years.ToString();
     string activeDays = job.activeDays;
     string lengthOfWork = job.lengthOfWork;
+    string dateToAdd = "";
 
-    //If activeDays has 'to' then get every date between the first string and the second string
-    Regex cycleRegex = new Regex(@"");
+    //If activeDays has 'to' then get every date between the first 
+    //string and the second string. If it has 'and' then just get
+    //those two dates in
+    Regex daysRx = new Regex(@"([A-Z])\w+");
+    MatchCollection daysMatch = daysRx.Matches(activeDays);
+    string daysString = daysMatch[0].ToString() + " " + daysMatch[1].ToString();
+    Debug.Log(daysString);
+    if (daysString == "Random Day") {
+      dateToAdd = month + "/" + day + "/" + year;
+      Debug.Log(dateToAdd);
+      dates.Add(dateToAdd);
+    }
 
-    //If lengthOfWork has day, only schedule it for the day, if it's week, schedule it for however
-    //many weeks are involved, if it's month then schedule it for however many months
-    Regex lengthRegex = new Regex(@"");
+    //If lengthOfWork has day, only schedule it for the day, if it's 
+    //week, schedule it for however many weeks are involved, if it's 
+    //month then schedule it for however many months
+    Regex cycleRx = new Regex(@"");
 
     return dates;
   }

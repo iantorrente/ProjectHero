@@ -38,16 +38,15 @@ public class TrainingHandler : MonoBehaviour {
   //Have to think of a better way to do this
   private static decimal handleTrainingLevel (string scene) {
     decimal value = 0;
-    decimal money = PlayerData.playerData.money;
     if (scene == "Gym Free") {
       value = 0.25m;
-    } else if (scene == "Gym Cheap" && !(money - 15 < 0)) {
+    } else if (scene == "Gym Cheap" && Helpers.isMoneyPositive(15m)) {
       value = 0.35m;
       StatsHandler.decreaseMoney(15m);
-    } else if (scene == "Gym Normal" && !(money - 45 < 0)) {
+    } else if (scene == "Gym Normal" && Helpers.isMoneyPositive(45m)) {
       value = 0.65m;
       StatsHandler.decreaseMoney(45m);
-    } else if (scene == "Gym Expensive" && !(money - 100 < 0)) {
+    } else if (scene == "Gym Expensive" && Helpers.isMoneyPositive(100m)) {
       value = 1;
       StatsHandler.decreaseMoney(100m);
     } else {

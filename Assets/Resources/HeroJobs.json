@@ -11,7 +11,7 @@
           "onFail": "",
           "successesNeeded": 4,
           "reward": "$10 - $20, r15 - r25",
-          "time": "Morning, Monday to Friday, 1 week"
+          "time": "Afternoon, Monday to Friday, 1 week"
         },
         {
           "type": "contract",
@@ -20,8 +20,8 @@
           "onSuccess": "",
           "onFail": "",
           "successesNeeded": 1,
-          "reward": "$10 - $20, r15 - r25",
-          "time": "Morning, Monday to Friday, 1 week"
+          "reward": "$25 - $50, r5 - r10",
+          "time": "Evening, Saturday and Sunday, 1 week"
         },
         {
           "type": "contract",
@@ -31,7 +31,7 @@
           "onFail": "",
           "successesNeeded": 1,
           "reward": "$10 - $20, r15 - r25",
-          "time": "Morning, Monday to Friday, 1 week"
+          "time": "Afternoon, Random Day, 1 Day"
         },
         {
           "type": "contract",
@@ -41,7 +41,7 @@
           "onFail": "",
           "successesNeeded": 1,
           "reward": "$10 - $20, r15 - r25",
-          "time": "Morning, Monday to Friday, 1 week"
+          "time": "Morning, Random Day, 1 Day"
         },
         {
           "type": "contract",
@@ -51,7 +51,7 @@
           "onFail": "",
           "successesNeeded": 1,
           "reward": "$10 - $20, r15 - r25",
-          "time": "Morning, Monday to Friday, 1 week"
+          "time": "Afternoon, Random Day, 1 Day"
         },
         {
           "type": "contract",
@@ -61,7 +61,7 @@
           "onFail": "",
           "successesNeeded": 1,
           "reward": "$10 - $20, r15 - r25",
-          "time": "Morning, Monday to Friday, 1 week"
+          "time": "Morning, Random Day, 1 Day"
         },
         {
           "type": "contract",
@@ -71,7 +71,7 @@
           "onFail": "",
           "successesNeeded": 1,
           "reward": "$10 - $20, r15 - r25",
-          "time": "Morning, Monday to Friday, 1 week"
+          "time": "Morning, Random Day, 1 Day"
         },
         {
           "type": "contract",
@@ -81,7 +81,7 @@
           "onFail": "",
           "successesNeeded": 1,
           "reward": "$10 - $20, r15 - r25",
-          "time": "Morning, Monday to Friday, 1 week"
+          "time": "Afternoon, Random Day, 1 Day"
         },
         {
           "type": "contract",
@@ -91,7 +91,7 @@
           "onFail": "",
           "successesNeeded": 1,
           "reward": "$10 - $20, r15 - r25",
-          "time": "Morning, Monday to Friday, 1 week"
+          "time": "Evening, Random Day, 1 Day"
         },
         {
           "type": "contract",
