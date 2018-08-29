@@ -164,7 +164,7 @@ public class JobHandler : MonoBehaviour {
   public static List<string> parseDate (ParsedJob job) {
     List<string> dates = new List<string>();
     string day = GlobalData.globalData.days.ToString();
-    string month = (GlobalData.globalData.months + 1).ToString();
+    string month = (GlobalData.globalData.months).ToString();
     string year = GlobalData.globalData.years.ToString();
     string activeDays = job.activeDays;
     string lengthOfWork = job.lengthOfWork;
