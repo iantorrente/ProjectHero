@@ -92,7 +92,7 @@ public class DisplayData : MonoBehaviour {
       + "\n\nJob Type: " + job.type
       + "\nRewards: $" + job.moneyReward + " and " + job.renownReward + " renown"
       +"\nThe job will be on the " + job.timeOfDay + " of " + job.activeDays[0] 
-      + " through " + job.activeDays[job.activeDays.Count]
+      + " through " + job.activeDays[job.activeDays.Count - 1]
       );
     } else if (job.activeDays.Count == 2) {
       GameObject.Find("Job Description").GetComponent<Text>().text = (

@@ -175,59 +175,54 @@ public class JobHandler : MonoBehaviour {
 
     //TODO: STILL NEED TO CHECK THE LENGTH OF THE WORK
     if (daysMatch.Count > 2 && daysMatch[1].ToString() == "to") {
-      /* 
-        1) get the days between the daysMatch[0] and daysMatch[2]
-        2) figure out the length of work
-        3) create dates and add them to dates as long as there are dates left
-        to add
-      */
-      
+      int indexOfOne = Array.IndexOf(weekDayNames, daysMatch[0].ToString());
+      int indexOfTwo = Array.IndexOf(weekDayNames, daysMatch[2].ToString());
+      int dayToAdd = 0;
+      List<string> dayNames = new List<string>();
+
+      for (int i = 0; i <= indexOfTwo - indexOfOne; i++) {
+        int _month = month;
+        int _year = year;
+        dayNames.Add(weekDayNames[indexOfOne + i]);
+        
+        if (day > 21) {
+          dayToAdd = Array.IndexOf(weekDayNames, dayNames[i]) + 1;
+          _month += 1;
+
+          if (month == 12) {
+            _year += 1;
+          }
+        } else {
+          dayToAdd = day + (7 - weekDay) + Array.IndexOf(weekDayNames, dayNames[i]);
+        }
+
+        dateToAdd = _month.ToString() + "/" + dayToAdd.ToString() + "/" + _year.ToString();
+        dates.Add(dateToAdd);
+      }
       //IndexOf current day - 7 = the next week day
     } else if (daysMatch.Count > 2 && daysMatch[1].ToString() == "and") {
         int indexOfOne = Array.IndexOf(weekDayNames, daysMatch[0].ToString());
         int indexOfTwo = Array.IndexOf(weekDayNames, daysMatch[2].ToString());
         int firstDay = 0;
         int secondDay = 0;
-        Debug.Log("Indexes: " + indexOfOne + " , " + indexOfTwo);
 
         if (daysMatch[0].ToString() == weekDayNames[weekDay] 
-        || daysMatch[2].ToString() == weekDayNames[weekDay]) {
-          Debug.Log("Scheduling job for the next week");
+        || daysMatch[2].ToString() == weekDayNames[weekDay] || weekDay > indexOfOne) {
 
-          if (daysMatch[0].ToString() == weekDayNames[weekDay] ) {
-            firstDay = day + 7;
-            secondDay = day + 7 + (7 - indexOfTwo);
-          } else if (daysMatch[2].ToString() == weekDayNames[weekDay]) {
-            firstDay = day + (7 - indexOfTwo);
-            secondDay = day + 7;
-          }
+          firstDay = day + (7 - weekDay) + indexOfOne;
+          secondDay = day + (7 - weekDay) + indexOfTwo;
 
           if (day > 21) {
-          firstDay = indexOfOne + 1;
-          secondDay = indexOfTwo + 1;
-          month += 1;
+            firstDay = indexOfOne + 1;
+            secondDay = indexOfTwo + 1;
+            month += 1;
 
             if (month == 12) {
               year += 1;
             }
           }
-        } else if (weekDay > indexOfOne) {
-          Debug.Log("Scheduling job for next week because it's too late");
-          firstDay = day + (7 - weekDay) + indexOfOne;
-          secondDay = day + (7 - weekDay) + indexOfTwo;
-
-          if (day > 21) {
-          firstDay = indexOfOne + 1;
-          secondDay = indexOfTwo + 1;
-          month += 1;
-
-          if (month == 12) {
-            year += 1;
-          }
-        }
         } else {
-          Debug.Log("Scheduling job for this week");
-          //Make this more efficient
+          //If the job is coming up in the week
           firstDay = day + (indexOfOne - weekDay);
           secondDay = day + (indexOfTwo - weekDay);
         }
