@@ -42,6 +42,7 @@ public class GlobalData : MonoBehaviour {
   public string[] calendarEvents { get; set; }
   public string[] weekDayNameArray { get; set; }
   public string[] monthNameArray { get; set; }
+  public List<ParsedJob> jobsToday = new List<ParsedJob>();
 
   void Awake () {
     if (globalData == null) {

@@ -68,7 +68,7 @@ public class CityHandler : MonoBehaviour {
       TimeHandler.handleCycleChange("nap");
     } else if (pressedButton == "Sleep") {
       PopularityHandler.handlePopularity();
-      TimeHandler.handleDayChange("sleep");
+      TimeHandler.handleCycleChange("sleep");
     } else if (pressedButton == "Calendar") {
       SceneManager.LoadScene("Calendar", LoadSceneMode.Single);
     }
@@ -91,7 +91,7 @@ public class CityHandler : MonoBehaviour {
     //Agency Actions
     if (pressedButton == "Find Job") {
       if (GlobalData.globalData.jobsGenerated == false) {
-        JobHandler.generateAgencyJobs();
+        JobGenerator.generateAgencyJobs();
         SceneManager.LoadScene("Agency Jobs", LoadSceneMode.Single);
       } else {
         Debug.Log("Jobs have already been generated");
@@ -102,6 +102,8 @@ public class CityHandler : MonoBehaviour {
       } else {
         Debug.Log("Look for jobs first");
       }
+    } else if (pressedButton == "Do Job") {
+      JobHandler.progressJob();
     } else if (pressedButton == "0") {
       SceneManager.LoadScene("Agency Display Job", LoadSceneMode.Single);
       GlobalData.globalData.pressedButton = pressedButton;

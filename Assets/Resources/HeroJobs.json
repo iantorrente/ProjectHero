@@ -11,7 +11,7 @@
           "onFail": "",
           "successesNeeded": 4,
           "reward": "$10 - $20, r15 - r25",
-          "time": "Afternoon, Monday to Friday, 1 week"
+          "time": "Afternoon, Monday to Friday, 2 week"
         },
         {
           "type": "contract",
@@ -47,7 +47,7 @@
           "type": "contract",
           "title": "Cat on a Tree",
           "description": "Someone's gotten their sweet ol' cat stuck up on a tree. It might be slightly stereotypical, but at least it's work, right?",
-          "onSuccess": "",
+          "onSuccess": "You found the cat easily enough. While the getting down from the tree could've been smoother, you've helped one more citizen, if only a tiny bit.",
           "onFail": "",
           "successesNeeded": 1,
           "reward": "$10 - $20, r15 - r25",
@@ -57,7 +57,7 @@
           "type": "contract",
           "title": "Kite on a Tree",
           "description": "Someone's gotten their sweet ol' kite stuck up on a tree. It might be slightly stereotypical, but at least it's work, right?",
-          "onSuccess": "",
+          "onSuccess": "You climbed up on the tree and got the kite loose pretty easily.",
           "onFail": "",
           "successesNeeded": 1,
           "reward": "$10 - $20, r15 - r25",
@@ -67,7 +67,7 @@
           "type": "contract",
           "title": "Baby on a Tree",
           "description": "How this happened I don't know, but someone's gotta do something about it. You're a hero so why don't you go and do this one?",
-          "onSuccess": "",
+          "onSuccess": "Without being judgemental you managed to get the baby down from the tree and back to their parent unscathed. You'll have to keep an eye out on this family, that's for sure.",
           "onFail": "",
           "successesNeeded": 1,
           "reward": "$10 - $20, r15 - r25",

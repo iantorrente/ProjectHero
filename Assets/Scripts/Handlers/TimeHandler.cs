@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class TimeHandler : MonoBehaviour {
   
   public static void handleDayChange (string action) {
+    Debug.Log("===================\nNEW DAY\n===================");
     //SavePlayerHandler.saveCharacter();
     if (action == "sleep") {
       EnergyHandler.handleEnergy(action);
@@ -85,16 +86,21 @@ public class TimeHandler : MonoBehaviour {
       EnergyHandler.handleEnergy(action);
     }
 
-    if (dayCycle == "Morning") {
-      GlobalData.globalData.dayCycle = "Afternoon";
-    } else if (dayCycle == "Afternoon") {
-      GlobalData.globalData.dayCycle = "Evening";
-    } else if (dayCycle == "Evening") {
-      GlobalData.globalData.dayCycle = "Midnight";
-    } else if (dayCycle == "Midnight") {
+    if (action == "sleep") {
       handleDayChange(action);
+    } else {
+      if (dayCycle == "Morning") {
+        GlobalData.globalData.dayCycle = "Afternoon";
+      } else if (dayCycle == "Afternoon") {
+        GlobalData.globalData.dayCycle = "Evening";
+      } else if (dayCycle == "Evening") {
+        GlobalData.globalData.dayCycle = "Midnight";
+      } else if (dayCycle == "Midnight") {
+        handleDayChange(action);
+      }
     }
-
+    
+    JobHandler.checkJobStatus();
     SceneManager.LoadScene("The City", LoadSceneMode.Single);
   }
 }

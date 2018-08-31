@@ -14,8 +14,6 @@ public class PopularityHandler : MonoBehaviour {
       "Hero", "Adored", "Loved", "Idolized", "Savior"
     };
     calculatePopularity(popularityArray, popularityTitle, popularityExperience);
-    Debug.Log(PlayerData.playerData.popularityTitle);
-    Debug.Log("Popularity Experience: " + popularityExperience);
   }
 
 
