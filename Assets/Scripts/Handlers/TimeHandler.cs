@@ -32,7 +32,6 @@ public class TimeHandler : MonoBehaviour {
     }
     SimulationHandler.handleSimulation();
     GlobalData.globalData.date = GlobalData.globalData.months.ToString() + "/" + GlobalData.globalData.days.ToString() + "/" + GlobalData.globalData.years.ToString();
-    Debug.Log(GlobalData.globalData.date);
 
     //Generate jobs after running the simulation so that
     //jobs can react to global dynamic events

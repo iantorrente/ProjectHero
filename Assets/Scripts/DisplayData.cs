@@ -86,12 +86,31 @@ public class DisplayData : MonoBehaviour {
     GameObject.Find("Job Title").GetComponent<Text>().text = (
         job.title
       );
-    GameObject.Find("Job Description").GetComponent<Text>().text = (
+    if (job.activeDays.Count > 2) {
+      GameObject.Find("Job Description").GetComponent<Text>().text = (
       job.description
       + "\n\nJob Type: " + job.type
       + "\nRewards: $" + job.moneyReward + " and " + job.renownReward + " renown"
-      +"\nThe job will be every " + job.timeOfDay + ", " + job.activeDays + " for " + job.lengthOfWork
-    );
+      +"\nThe job will be on the " + job.timeOfDay + " of " + job.activeDays[0] 
+      + " through " + job.activeDays[job.activeDays.Count]
+      );
+    } else if (job.activeDays.Count == 2) {
+      GameObject.Find("Job Description").GetComponent<Text>().text = (
+      job.description
+      + "\n\nJob Type: " + job.type
+      + "\nRewards: $" + job.moneyReward + " and " + job.renownReward + " renown"
+      +"\nThe job will be on the " + job.timeOfDay + " of " + job.activeDays[0] 
+      + " and " + job.activeDays[1]
+      );
+    } else {
+      GameObject.Find("Job Description").GetComponent<Text>().text = (
+      job.description
+      + "\n\nJob Type: " + job.type
+      + "\nRewards: $" + job.moneyReward + " and " + job.renownReward + " renown"
+      +"\nThe job will be on the " + job.timeOfDay + " of " + job.activeDays[0]
+      );
+    }
+    
   }
 
 	// Use this for initialization

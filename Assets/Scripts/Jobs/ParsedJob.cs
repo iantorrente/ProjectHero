@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class ParsedJob {
   public string type { get; set; }
   public string title { get; set; }
@@ -9,6 +11,6 @@ public class ParsedJob {
   public int moneyReward { get; set; }
   public int renownReward { get; set; }
   public string timeOfDay { get; set; }
-  public string activeDays { get; set; }
+  public List<string> activeDays = new List<string>();
   public string lengthOfWork { get; set; }
 }

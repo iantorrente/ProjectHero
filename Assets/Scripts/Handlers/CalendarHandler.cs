@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CalendarHandler : MonoBehaviour {
-  public static void handleCalendar () {
-  }
-
   //Happens when calendar is loaded for the first time
   private void initializeCalendar () {
     Debug.Log(Calendar.calendarEvents.Count);
@@ -34,10 +31,6 @@ public class CalendarHandler : MonoBehaviour {
     changeMonth();
   }
 
-  //We want to handle all of the population of the events in here so that
-  //when month is changed it happens implicitly
-  //Don't really need to pass in the month since it can be found by getting
-  //Calendar.calendar.month
   void changeMonth () {
     int month = Calendar.calendar.month - 1;
     string monthName = GlobalData.globalData.monthNameArray[month];
@@ -45,7 +38,6 @@ public class CalendarHandler : MonoBehaviour {
       monthName + ", " + Calendar.calendar.year
     );
     populateCalendar();
-    //Iterate through events of this month and year and populate calendar with them
   }
 
   void populateCalendar () {
@@ -80,7 +72,7 @@ public class CalendarHandler : MonoBehaviour {
 
   public static void createJobCE (ParsedJob job) {
     List<string> dates = new List<string>();
-    dates = JobHandler.parseDate(job);
+    dates = job.activeDays;
     //Create a new calendar event for each date in the job
     for (int i = 0; i < dates.Count; i++) {
       CalendarEvent cEvent = new CalendarEvent();
@@ -90,11 +82,6 @@ public class CalendarHandler : MonoBehaviour {
       cEvent.title = job.title;
       Calendar.calendarEvents.Add(cEvent);
     }
-
-    //Parse through the data before setting it up in the calendar events
-    //put dates into List<int> dates with the format dd/mm/yyyy
-    //Create a new cEvent per date inside of List<int> dates
-
   }
 
   void Awake () {

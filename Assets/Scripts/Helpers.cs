@@ -25,6 +25,14 @@ public class Helpers {
     return pay + (pay * modifier);
   }
 
+  public static bool sameDay (string dayOne, string dayTwo) {
+    if (GlobalData.globalData.weekDayName == dayOne) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   //USE CASE: getRandomNumbers(amount, 0, 10) -- 10 being the max length of number of jobs in array
   public static int[] getRandomNumbers (int amount, int min, int max) {
     //Needed because Next() is non-static

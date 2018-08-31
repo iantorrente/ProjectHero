@@ -5,7 +5,6 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class JobHandler : MonoBehaviour {
-  
   /*
     Create jobs based on crimes (victims of violent crimes/2
     and victims of proprety crimes/10).
@@ -15,7 +14,6 @@ public class JobHandler : MonoBehaviour {
   public static void generateAgencyJobs () {
     GlobalData.globalData.jobsGenerated = true;
     int maxJobs = 8; //Number of displayed jobs
-    //It's possible for jobs for a day to be zero. Do we want this?
     int heroJobs = UnityEngine.Random.Range(2, maxJobs);
     int humanJobs = UnityEngine.Random.Range(0, (maxJobs - heroJobs));
     int corpJobs = UnityEngine.Random.Range(0, (maxJobs - (heroJobs + humanJobs)));
@@ -68,8 +66,6 @@ public class JobHandler : MonoBehaviour {
     }
   }
 
-  //Moonlighting gives minimal money compared to hero jobs but they do
-  //begin to help train your stats
   public static void handleMoonlight (string job) {
     decimal rMod = PlayerData.playerData.renownModifier;
     decimal sMod = PlayerData.playerData.strengthModifier;
@@ -118,8 +114,9 @@ public class JobHandler : MonoBehaviour {
       parsedJobs[i].moneyReward = parseRewards("money", jobs[i].reward);
       parsedJobs[i].renownReward = parseRewards("renown", jobs[i].reward);
       parsedJobs[i].timeOfDay = parseTime("timeOfDay", jobs[i].time);
-      parsedJobs[i].activeDays = parseTime("activeDays", jobs[i].time);
       parsedJobs[i].lengthOfWork = parseTime("lengthOfWork", jobs[i].time);
+      //For active days may want to return a list of dates
+      parsedJobs[i].activeDays = parseDate(jobs[i]);
     }
 
     return parsedJobs;
@@ -161,33 +158,100 @@ public class JobHandler : MonoBehaviour {
   }
 
   //Returns a list of dates formatted dd/mm/yyyy
-  public static List<string> parseDate (ParsedJob job) {
+  public static List<string> parseDate (Jobs job) {
     List<string> dates = new List<string>();
-    string day = GlobalData.globalData.days.ToString();
-    string month = (GlobalData.globalData.months).ToString();
-    string year = GlobalData.globalData.years.ToString();
-    string activeDays = job.activeDays;
-    string lengthOfWork = job.lengthOfWork;
+    int day = GlobalData.globalData.days;
+    int weekDay = GlobalData.globalData.weekDay;
+    int month = GlobalData.globalData.months;
+    int year = GlobalData.globalData.years;
+    string activeDays = parseTime("activeDays", job.time);
+    string lengthOfWork = parseTime("lengthOfWork", job.time);
     string dateToAdd = "";
+    string[] weekDayNames = GlobalData.globalData.weekDayNameArray;
 
-    //If activeDays has 'to' then get every date between the first 
-    //string and the second string. If it has 'and' then just get
-    //those two dates in
-    Regex daysRx = new Regex(@"([A-Z])\w+");
-    MatchCollection daysMatch = daysRx.Matches(activeDays);
-    string daysString = daysMatch[0].ToString() + " " + daysMatch[1].ToString();
-    Debug.Log(daysString);
-    if (daysString == "Random Day") {
-      dateToAdd = month + "/" + day + "/" + year;
-      Debug.Log(dateToAdd);
+    Regex rx = new Regex(@"[\w]+");
+    MatchCollection daysMatch = rx.Matches(activeDays);
+    MatchCollection lengthMatch = rx.Matches(lengthOfWork);
+
+    //TODO: STILL NEED TO CHECK THE LENGTH OF THE WORK
+    if (daysMatch.Count > 2 && daysMatch[1].ToString() == "to") {
+      /* 
+        1) get the days between the daysMatch[0] and daysMatch[2]
+        2) figure out the length of work
+        3) create dates and add them to dates as long as there are dates left
+        to add
+      */
+      
+      //IndexOf current day - 7 = the next week day
+    } else if (daysMatch.Count > 2 && daysMatch[1].ToString() == "and") {
+        int indexOfOne = Array.IndexOf(weekDayNames, daysMatch[0].ToString());
+        int indexOfTwo = Array.IndexOf(weekDayNames, daysMatch[2].ToString());
+        int firstDay = 0;
+        int secondDay = 0;
+        Debug.Log("Indexes: " + indexOfOne + " , " + indexOfTwo);
+
+        if (daysMatch[0].ToString() == weekDayNames[weekDay] 
+        || daysMatch[2].ToString() == weekDayNames[weekDay]) {
+          Debug.Log("Scheduling job for the next week");
+
+          if (daysMatch[0].ToString() == weekDayNames[weekDay] ) {
+            firstDay = day + 7;
+            secondDay = day + 7 + (7 - indexOfTwo);
+          } else if (daysMatch[2].ToString() == weekDayNames[weekDay]) {
+            firstDay = day + 7 - (7 - indexOfTwo);
+            secondDay = day + 7;
+          }
+
+          if (day > 21) {
+          firstDay = indexOfOne + 1;
+          secondDay = indexOfTwo + 1;
+          month += 1;
+
+            if (month == 12) {
+              year += 1;
+            }
+          }
+        } else if (weekDay > indexOfOne) {
+          Debug.Log("Scheduling job for next week because it's too late");
+          firstDay = day + (7 - weekDay) + indexOfOne;
+          secondDay = day + (7 - weekDay) + indexOfTwo;
+
+          if (day > 21) {
+          firstDay = indexOfOne + 1;
+          secondDay = indexOfTwo + 1;
+          month += 1;
+
+          if (month == 12) {
+            year += 1;
+          }
+        }
+        } else {
+          Debug.Log("Scheduling job for this week");
+          //Make this more efficient
+          firstDay = day + (indexOfOne - weekDay);
+          secondDay = day + (indexOfTwo - weekDay);
+        }
+
+        string dateToAddOne = month.ToString() + "/" + firstDay.ToString() + "/" + year.ToString();
+        string dateToAddTwo = month.ToString() + "/" + secondDay.ToString() + "/" + year.ToString();
+        dates.Add(dateToAddOne);
+        dates.Add(dateToAddTwo);
+    } else {
+      int randDay = day + UnityEngine.Random.Range(1, 6);
+      dateToAdd = month + "/" + randDay.ToString() + "/" + year;
       dates.Add(dateToAdd);
     }
 
     //If lengthOfWork has day, only schedule it for the day, if it's 
     //week, schedule it for however many weeks are involved, if it's 
     //month then schedule it for however many months
-    Regex cycleRx = new Regex(@"");
 
     return dates;
+  }
+
+  private string addDate (MatchCollection match) {
+    string dateToAdd = "";
+
+    return dateToAdd;
   }
 }
