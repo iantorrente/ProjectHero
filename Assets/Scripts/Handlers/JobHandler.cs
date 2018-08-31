@@ -28,7 +28,7 @@ public class JobHandler : MonoBehaviour {
     }
   }
 
-  public static void getRandomHeroJobs (int amount) {
+  private static void getRandomHeroJobs (int amount) {
     int rIndex = PlayerData.playerData.renownIndex; //Player's renown level
     HeroJobs heroJobs = JobsData.jobsData.heroJobsCollection.heroJobs[rIndex]; //Gets possible jobs from data
     Jobs[] jobArray = new Jobs[amount]; //To store jobs
@@ -39,7 +39,7 @@ public class JobHandler : MonoBehaviour {
     addJobs(jobArray);
   }
 
-  public static void getRandomCorpJobs (int amount) {
+  private static void  getRandomCorpJobs (int amount) {
     Jobs[] corpJobs = JobsData.jobsData.corpJobsCollection.jobs;
     Jobs[] jobArray = new Jobs[amount];
     int[] randomNumbers = Helpers.getRandomNumbers(amount, 0, corpJobs.Length);
@@ -49,7 +49,7 @@ public class JobHandler : MonoBehaviour {
     addJobs(jobArray);    
   }
 
-  public static void getRandomHumanJobs (int amount) {
+  private static void getRandomHumanJobs (int amount) {
     Jobs[] humanJobs = JobsData.jobsData.humanJobsCollection.jobs;
     Jobs[] jobArray = new Jobs[amount];
     int[] randomNumbers = Helpers.getRandomNumbers(amount, 0, humanJobs.Length);
@@ -100,7 +100,7 @@ public class JobHandler : MonoBehaviour {
     }
   }
 
-  public static ParsedJob[] parseHeroJobs (Jobs[] jobs, int amount) {
+  private static ParsedJob[] parseHeroJobs (Jobs[] jobs, int amount) {
     ParsedJob[] parsedJobs = new ParsedJob[amount];
     
     for (int i = 0; i < amount; i++) {
@@ -124,7 +124,7 @@ public class JobHandler : MonoBehaviour {
 
   //TODO: Turn this into a generic, dynamic parser so that whatever is put in it can parse
   //without any issues, even if some fields are missing
-  public static int parseRewards (string type, string stringReward) {
+  private static int parseRewards (string type, string stringReward) {
     int reward = 0;
     Regex rx = new Regex(@"(0|[1-9][0-9]*)");
     MatchCollection matches = rx.Matches(stringReward);
@@ -143,7 +143,7 @@ public class JobHandler : MonoBehaviour {
   }
 
   //Splits json time into 3 separate strings
-  public static string parseTime (string type, string stringTime) {
+  private static string parseTime (string type, string stringTime) {
     string time = "";
     string[] timeArray = stringTime.Split(',');
 
@@ -158,7 +158,7 @@ public class JobHandler : MonoBehaviour {
   }
 
   //Returns a list of dates formatted dd/mm/yyyy
-  public static List<string> parseDate (Jobs job) {
+  private static List<string> parseDate (Jobs job) {
     List<string> dates = new List<string>();
     int day = GlobalData.globalData.days;
     int weekDay = GlobalData.globalData.weekDay;
