@@ -26,7 +26,7 @@
         {
           "type": "contract",
           "title": "Invisible War",
-          "description": "Somewhere out there are villains afoot. Small villains, large villains, they're all hiding and waiting to enact their dastardly deeds. While we have no proof of it, go out and scour the lands for them!",
+          "description": "Somewhere out there villains are afoot. Small villains, large villains, they're all hiding and waiting to enact their dastardly deeds. While we have no proof of it, go out and scour the lands for them!",
           "onSuccess": "",
           "onFail": "",
           "successesNeeded": 1,

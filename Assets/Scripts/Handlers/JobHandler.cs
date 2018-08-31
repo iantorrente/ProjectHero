@@ -198,7 +198,7 @@ public class JobHandler : MonoBehaviour {
             firstDay = day + 7;
             secondDay = day + 7 + (7 - indexOfTwo);
           } else if (daysMatch[2].ToString() == weekDayNames[weekDay]) {
-            firstDay = day + 7 - (7 - indexOfTwo);
+            firstDay = day + (7 - indexOfTwo);
             secondDay = day + 7;
           }
 
