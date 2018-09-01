@@ -95,8 +95,10 @@ public class JobGenerator : MonoBehaviour {
 
   //TODO: Turn this into a generic, dynamic parser so that whatever is put in it can parse
   //without any issues, even if some fields are missing
-  private static int parseRewards (string type, string stringReward) {
-    int reward = 0;
+  private static decimal parseRewards (string type, string stringReward) {
+    decimal rModifier = PlayerData.playerData.renownModifier;
+    decimal rawReward = 0;
+    decimal reward = 0;
     Regex rx = new Regex(@"(0|[1-9][0-9]*)");
     MatchCollection matches = rx.Matches(stringReward);
     int[] rewardArray = new int[matches.Count];
@@ -106,7 +108,8 @@ public class JobGenerator : MonoBehaviour {
     }
 
     if (type == "money") {
-      reward = UnityEngine.Random.Range(rewardArray[0], rewardArray[1]);
+      rawReward = UnityEngine.Random.Range(rewardArray[0], rewardArray[1]);
+      reward = rawReward + (rawReward * rModifier);
     } else if (type == "renown") {
       reward = UnityEngine.Random.Range(rewardArray[2], rewardArray[3]);
     }

@@ -41,7 +41,7 @@ public class DisplayData : MonoBehaviour {
       + "\nFortitude: " + (int)playerPower.fortitude
       + "\nDate: " + GlobalData.globalData.date
       + "\nMoney: $" + String.Format("{0:0.00}", PlayerData.playerData.money)
-      + "\nPopularity: " + PlayerData.playerData.popularityTitle
+      + "\nPopularity: " + PlayerData.playerData.popularityTitle + " (" + PlayerData.playerData.popularityExperience + ")" 
       + "\n\nTaken Jobs: " + jobsString
     );
   }

@@ -8,8 +8,8 @@ public class ParsedJob {
   public string onFail { get; set; }
   public int successesNeeded { get; set; }
   public int successes { get; set; }
-  public int moneyReward { get; set; }
-  public int renownReward { get; set; }
+  public decimal moneyReward { get; set; }
+  public decimal renownReward { get; set; }
   public string timeOfDay { get; set; }
   public List<string> activeDays = new List<string>();
   public string lengthOfWork { get; set; }

@@ -51,12 +51,15 @@ public class JobHandler : MonoBehaviour {
       if (jobs[0].successes == jobs[0].successesNeeded) {
         StatsHandler.increaseMoney(jobs[0].moneyReward);
         StatsHandler.increasePopularity(jobs[0].renownReward);
+
+        Debug.Log(jobs[0].onSuccess);
+        Debug.Log("You got $" + String.Format("{0:0.00}", jobs[0].moneyReward) + " and " 
+        + jobs[0].renownReward + " renown from accomplishing that job!");
+        
         GlobalData.globalData.jobsToday.RemoveAt(0);
         PlayerData.playerData.takenJobs.RemoveAt(0);
         PlayerData.playerData.jobsTaken = 0;
-
-        Debug.Log(jobs[0].onSuccess);
-        Debug.Log("You got $" + jobs[0].moneyReward + " and " + jobs[0].renownReward + " renown from accomplishing that job!");
+        TimeHandler.handleCycleChange("job");
       }
     } else if (jobs.Count == 0) {
       Debug.Log("No jobs to work on");
